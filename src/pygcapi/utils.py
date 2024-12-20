@@ -1,4 +1,5 @@
-import datetime
+from datetime import datetime
+import calendar
 from typing import List, Dict, Tuple
 import pandas as pd
 import re
@@ -571,24 +572,31 @@ def get_order_action_type_description(action_type_code: str) -> str:
     """
     return order_action_type_descriptions.get(action_type_code, "Unknown action type code")
 
-def extract_every_nth(n_months: int = 6, by_time: str = '15min', n: int = 3900) -> List[Tuple[str, str]]:
+def extract_every_nth(n_months: int = 6, by_time: str = '15min', n: int = 3900):
     """
-    Generate start and stop timestamps for API requests.
-    :param n_months: Number of months of data to retrieve.
-    :param by_time: Time interval for data extraction (e.g., '15min').
-    :param n: Maximum number of data points per request.
-    :return: A list of tuples with start and stop timestamps.
+    Generate start and stop Unix UTC timestamps for API requests.
     """
-
-    # Define the time range
-    end_time = datetime.datetime.utcnow()
+    end_time = datetime.utcnow()
     start_time = end_time - pd.DateOffset(months=n_months)
-    
-    time_seq = pd.date_range(start=start_time, end=end_time, freq=by_time)
-    indices = list(range(len(time_seq) - 1, -1, -n))[::-1]
-    intervals = [(time_seq[i].isoformat(), time_seq[i + 1].isoformat()) for i in indices[:-1]]
-    return intervals
 
+    # Generate date range in UTC
+    time_seq = pd.date_range(start=start_time, end=end_time, freq=by_time, tz="UTC")
+
+    intervals = []
+    for i in range(0, len(time_seq), n):
+        start_dt = time_seq[i]
+        if i + n < len(time_seq):
+            end_dt = time_seq[i + n]
+        else:
+            end_dt = time_seq[-1]
+
+        # Use .timestamp() to get POSIX timestamp in UTC
+        start_utc = int(start_dt.timestamp())
+        end_utc = int(end_dt.timestamp())
+
+        intervals.append((start_utc, end_utc))
+
+    return intervals
 
 
 

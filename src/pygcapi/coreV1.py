@@ -129,6 +129,7 @@ class GCapiClient:
                  to_ts: int = None) -> pd.DataFrame:
         """
         Retrieve OHLC data for a given market and return as a DataFrame.
+        "MINUTE", "HOUR", "DAY"
         """
         params = {
             "interval": interval,
@@ -281,30 +282,44 @@ class GCapiClient:
         return response.json()
 
     def get_long_series(self, market_id: str, n_months: int = 6, by_time: str = '15min', n: int = 3900, interval: str = "MINUTE", span: int = 15) -> pd.DataFrame:
+    
         """
-        Retrieve long series data by bypassing API limitations.
-        Returns a DataFrame with the dates converted to a proper datetime format.
+        Retrieve a long time series of OHLC data by bypassing API limitations.
+        Internally uses get_ohlc to fetch data in chunks across the specified period.
+
+        :param market_id: The market ID for which OHLC data is fetched.
+        :param n_months: Number of months of data to retrieve.
+        :param by_time: The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.).
+        :param n: The maximum number of data points per request.
+        :param interval: The interval of OHLC data (e.g., "MINUTE", "HOUR").
+        :param span: The span size for the given interval.
+        :return: A concatenated DataFrame of all the OHLC data retrieved.
         """
         time_intervals = extract_every_nth(n_months=n_months, by_time=by_time, n=n)
         long_series = []
 
-        for start, stop in time_intervals:
-            params = {
-                "interval": interval,
-                "span": span,
-                "fromTimeStampUTC": start,
-                "toTimeStampUTC": stop,
-                "maxResults": n
-            }
-            response = requests.get(f"{self.BASE_URL}/market/barhistorybetween", headers=self.headers, params=params)
-            if response.status_code != 200:
-                print(f"Failed to retrieve data for interval {start} - {stop}: {response.text}")
+        for start_ts, stop_ts in time_intervals:
+            # Use the get_ohlc method to fetch data for each chunk
+            try:
+                ohlc_df = self.get_ohlc(
+                    market_id=market_id,
+                    num_ticks=n,
+                    interval=interval,
+                    span=span,
+                    from_ts=start_ts,
+                    to_ts=stop_ts
+                )
+                long_series.append(ohlc_df)
+            except Exception as e:
+                print(f"Failed to retrieve OHLC data for interval {start_ts} - {stop_ts}: {e}")
                 continue
 
-            data = response.json().get("PriceBars", [])
-            long_series.extend(data)
-
-        # Convert the long series data into a DataFrame with formatted datetime
-        #TO FIX!
-        df = convert_to_dataframe(long_series)
-        return df
+        # Concatenate all DataFrames if we have data
+        if long_series:
+            df = pd.concat(long_series, ignore_index=True)
+            # Remove duplicates if any and sort by BarDate
+            df = df.drop_duplicates().reset_index(drop=True)
+            return df
+        else:
+            print("No data was retrieved.")
+            return pd.DataFrame()

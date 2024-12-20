@@ -35,5 +35,10 @@ ohlc = client.get_ohlc(market_id=market_id,from_ts=from_ts,to_ts=to_ts, num_tick
 ohlc
 
 #ERROR HERE!!
-longTS = client.get_long_series(market_id=market_id, n_months=1, by_time="30min", interval="MINUTE", span=4000)
-longTS
+client.get_long_series(market_id=market_id, n_months=7, by_time="30min", interval="MINUTE",span=30)
+
+
+from pygcapi.utils import extract_every_nth
+extract_every_nth(n_months=7, by_time="30min")
+
+
