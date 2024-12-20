@@ -44,19 +44,22 @@ client = GCapiClient(username=IDLOG, password=PSWD, appkey=APKEY)
 
 # Example Usage
 
-Retrieve Account Information:
+
 
 ```python
+
+#Retrieve Account Information:
+
 account_info = client.get_account_info()
 print(account_info)
 
 # Retrieve a specific field (e.g., TradingAccountId)
+
 trading_account_id = client.get_account_info(key="TradingAccountId")
 print(trading_account_id)
-```
-**Get Market Information:**
 
-```python
+#Get Market Information:
+
 market_info = client.get_market_info("EUR/USD")
 print(market_info)
 
@@ -84,7 +87,6 @@ prices = client.get_prices(
     price_type="MID"
 )
 print(prices.head())
-
 
 #Retrieve OHLC Data
 
@@ -130,8 +132,10 @@ print(trade_history)
 To report bugs/issues/feature requests, please file an [issue](https://github.com/athammad/pygcapi/issues/).
 
 ## Author
-`rgcapi` is written by [Ahmed T. Hammad](https://athsas.com/) and is under active development. Please feel free to contribute by submitting any issues or requests—or by solving any current issues!
+`pygcapi` is written by [Ahmed T. Hammad](https://athsas.com/) and is under active development. Please feel free to contribute by submitting any issues or requests—or by solving any current issues!
 
+## R version
+If you prefer `R`, you can use the [rgcapi library](https://github.com/athammad/rgcapi/).
 
 ## Disclaimer
 This package is not supported by `Forex.com`, and the author does not hold any responsibility for how users decide to use the library. Use it at your own risk.
