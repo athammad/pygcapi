@@ -1,12 +1,14 @@
 import requests
 import json
-from typing import Optional, Dict, Any, List
+from typing import Optional, Dict, Any, List, Union
+import pandas as pd
 from pygcapi.utils import (
     get_instruction_status_description,
     get_instruction_status_reason_description,
     get_order_status_description,
     get_order_status_reason_description,
     get_order_action_type_description,
+    convert_to_dataframe,
     extract_every_nth
 )
 
@@ -32,7 +34,7 @@ class GCapiClient:
             "Password": password,
             "AppKey": appkey
         }
-        
+
         response = requests.post(
             f"{self.BASE_URL}/session",
             headers=headers,
@@ -55,9 +57,6 @@ class GCapiClient:
     def get_account_info(self, key: Optional[str] = None) -> Any:
         """
         Retrieve account information.
-
-        :param key: Optional key to extract specific information from the account details.
-        :return: Account information or specific value if key is provided.
         """
         response = requests.get(f"{self.BASE_URL}/UserAccount/ClientAndTradingAccount", headers=self.headers)
         if response.status_code != 200:
@@ -74,10 +73,6 @@ class GCapiClient:
     def get_market_info(self, market_name: str, key: Optional[str] = None) -> Any:
         """
         Retrieve market information.
-
-        :param market_name: The name of the market to retrieve information for.
-        :param key: Optional key to extract specific information from the market details.
-        :return: Market information or specific value if key is provided.
         """
         params = {"marketName": market_name}
         response = requests.get(f"{self.BASE_URL}/cfd/markets", headers=self.headers, params=params)
@@ -94,15 +89,72 @@ class GCapiClient:
 
         return markets[0]
 
+    def get_prices(self, market_id: str, num_ticks: int, from_ts: int, to_ts: int, price_type: str = "MID") -> pd.DataFrame:
+        """
+        Retrieve price data (tick history) for a given market and return as a DataFrame.
+        """
+        params = {
+            "fromTimeStampUTC": from_ts,
+            "toTimeStampUTC": to_ts,
+            "maxResults": num_ticks,
+            "priceType": price_type.upper()
+        }
+
+        url = f"{self.BASE_URL}/market/{market_id}/tickhistorybetween"
+        response = requests.get(url, headers=self.headers, params=params)
+
+        if response.status_code != 200:
+            raise Exception(f"Failed to retrieve prices: {response.text}")
+
+        data = response.json()
+        price_ticks = data.get("PriceTicks", [])
+        if not price_ticks:
+            raise Exception(f"No price data found for market ID {market_id}")
+
+        # Rename 'TickDate' to 'BarDate' so convert_to_dataframe can handle it
+        for tick in price_ticks:
+            if 'TickDate' in tick:
+                tick['BarDate'] = tick.pop('TickDate')
+
+        # Convert to DataFrame with nicely formatted date
+        df = convert_to_dataframe(price_ticks)
+        return df
+
+    def get_ohlc(self, 
+                 market_id: str, 
+                 num_ticks: int, 
+                 interval: str = "HOUR", 
+                 span: int = 1, 
+                 from_ts: int = None, 
+                 to_ts: int = None) -> pd.DataFrame:
+        """
+        Retrieve OHLC data for a given market and return as a DataFrame.
+        """
+        params = {
+            "interval": interval,
+            "span": span,
+            "fromTimeStampUTC": from_ts,
+            "toTimeStampUTC": to_ts,
+            "maxResults": num_ticks
+        }
+
+        url = f"{self.BASE_URL}/market/{market_id}/barhistorybetween"
+        response = requests.get(url, headers=self.headers, params=params)
+        if response.status_code != 200:
+            raise Exception(f"Failed to retrieve OHLC data: {response.text}")
+
+        data = response.json()
+        price_bars = data.get("PriceBars", [])
+        if not price_bars:
+            raise Exception(f"No OHLC data found for market ID {market_id}")
+
+        # Convert to DataFrame with nicely formatted date
+        df = convert_to_dataframe(price_bars)
+        return df
+
     def trade_order(self, quantity: float, direction: str, market_id: str, price: float) -> Dict:
         """
         Place a trade order.
-
-        :param quantity: The quantity of the trade.
-        :param direction: The trade direction, either "buy" or "sell".
-        :param market_id: The ID of the market to trade on.
-        :param price: The price at which to execute the trade.
-        :return: Response from the API containing trade details.
         """
         order = {
             "MarketId": market_id,
@@ -131,8 +183,6 @@ class GCapiClient:
     def list_open_positions(self) -> Dict:
         """
         List all open positions.
-
-        :return: A dictionary containing open positions.
         """
         response = requests.get(f"{self.BASE_URL}/order/openpositions", headers=self.headers)
         if response.status_code != 200:
@@ -149,8 +199,6 @@ class GCapiClient:
     def list_active_orders(self) -> Dict:
         """
         List all active orders.
-
-        :return: A dictionary containing active orders.
         """
         response = requests.get(f"{self.BASE_URL}/order/activeorders", headers=self.headers)
         if response.status_code != 200:
@@ -167,9 +215,6 @@ class GCapiClient:
     def close_all_trades(self, tolerance: float) -> List[Dict]:
         """
         Close all open trades with a given price tolerance.
-
-        :param tolerance: The price tolerance for closing trades.
-        :return: A list of responses for each closed trade.
         """
         open_positions = self.list_open_positions().get("OpenPositions", [])
 
@@ -182,14 +227,40 @@ class GCapiClient:
             market_id = position["MarketId"]
             direction = "sell" if position["Direction"] == "buy" else "buy"
             quantity = position["Quantity"]
-            order_id = position["OrderId"]
-            market_name = position["MarketName"]
+            # Example adjustment: adding tolerance to the price.
+            close_price = position.get("Price", 0.0) + tolerance
 
             response = self.trade_order(
                 quantity=quantity,
                 direction=direction,
                 market_id=market_id,
-                price=position.get("Price", 0.0) + tolerance  # Example adjustment
+                price=close_price
+            )
+            close_responses.append(response)
+
+        return close_responses
+
+    def close_all_trades_new(self, open_positions: List[Dict], tolerance: float) -> List[Dict]:
+        """
+        Close all trades using a provided list of open positions and a given tolerance.
+        """
+        if not open_positions:
+            print("No open positions to close.")
+            return []
+
+        close_responses = []
+        for position in open_positions:
+            market_id = position["MarketId"]
+            direction = "sell" if position["Direction"] == "buy" else "buy"
+            quantity = position["Quantity"]
+            # Add tolerance to the price if needed
+            close_price = position.get("Price", 0.0) + tolerance
+
+            response = self.trade_order(
+                quantity=quantity,
+                direction=direction,
+                market_id=market_id,
+                price=close_price
             )
             close_responses.append(response)
 
@@ -198,10 +269,6 @@ class GCapiClient:
     def get_trade_history(self, from_ts: Optional[str] = None, max_results: int = 100) -> Dict:
         """
         Retrieve the trade history for the account.
-
-        :param from_ts: Optional timestamp to filter trades starting from a specific time.
-        :param max_results: Maximum number of results to retrieve.
-        :return: A dictionary containing trade history data.
         """
         params = {"TradingAccountId": self.trading_account_id, "maxResults": max_results}
         if from_ts:
@@ -213,24 +280,16 @@ class GCapiClient:
 
         return response.json()
 
-    def get_long_series(self, market_id: str, n_months: int = 6, by_time: str = '15min', n: int = 3900, interval: str = "MINUTE", span: int = 15) -> List[Dict]:
+    def get_long_series(self, market_id: str, n_months: int = 6, by_time: str = '15min', n: int = 3900, interval: str = "MINUTE", span: int = 15) -> pd.DataFrame:
         """
         Retrieve long series data by bypassing API limitations.
-
-        :param market_id: The market ID to retrieve data for.
-        :param n_months: Number of months of data to retrieve.
-        :param by_time: Time interval for data extraction (e.g., '15min').
-        :param n: Maximum number of data points per request.
-        :param interval: Time interval for OHLC data (e.g., "MINUTE", "HOUR").
-        :param span: Span of the interval.
-        :return: A list of dictionaries containing the long series data.
+        Returns a DataFrame with the dates converted to a proper datetime format.
         """
         time_intervals = extract_every_nth(n_months=n_months, by_time=by_time, n=n)
         long_series = []
 
         for start, stop in time_intervals:
             params = {
-                "MarketId": market_id,
                 "interval": interval,
                 "span": span,
                 "fromTimeStampUTC": start,
@@ -245,4 +304,7 @@ class GCapiClient:
             data = response.json().get("PriceBars", [])
             long_series.extend(data)
 
-        return long_series
+        # Convert the long series data into a DataFrame with formatted datetime
+        #TO FIX!
+        df = convert_to_dataframe(long_series)
+        return df

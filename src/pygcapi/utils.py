@@ -1,6 +1,7 @@
 import datetime
 from typing import List, Dict, Tuple
 import pandas as pd
+import re
 
 # Lookup Tables
 order_status_descriptions = {
@@ -587,3 +588,36 @@ def extract_every_nth(n_months: int = 6, by_time: str = '15min', n: int = 3900) 
     indices = list(range(len(time_seq) - 1, -1, -n))[::-1]
     intervals = [(time_seq[i].isoformat(), time_seq[i + 1].isoformat()) for i in indices[:-1]]
     return intervals
+
+
+
+
+def convert_to_dataframe(data: list) -> pd.DataFrame:
+    """
+    Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame
+    with a nicely formatted datetime column.
+    
+    :param data: A list of dictionaries, each containing 'BarDate' or 'TickDate' keys with '/Date(...)' format.
+    :return: A pandas DataFrame with a 'Date' column as a datetime and other columns as numeric data.
+    """
+    # Create DataFrame from the list of dictionaries
+    df = pd.DataFrame(data)
+    
+    # Extract the timestamp in milliseconds from the '/Date(...)' format.
+    # For example: '/Date(1732075200000)/' -> '1732075200000'
+    df['BarDate'] = df['BarDate'].apply(lambda x: int(re.findall(r'\d+', x)[0]))
+    
+    # Convert milliseconds to datetime
+    df['Date'] = pd.to_datetime(df['BarDate'], unit='ms', utc=True)
+    
+    # Drop the old 'BarDate' column or rename it
+    df.drop(columns=['BarDate'], inplace=True)
+    
+    # Optionally, convert to local timezone if desired:
+    # df['Date'] = df['Date'].dt.tz_convert('Asia/Singapore')
+    
+    # Reorder columns so that Date is first
+    cols = ['Date'] + [col for col in df.columns if col != 'Date']
+    df = df[cols]
+    
+    return df
