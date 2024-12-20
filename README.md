@@ -1,6 +1,6 @@
 
 
-# pygcapi <img src="./logo_rgcapi.png" align="right" height="200"/>
+# pygcapi <img src="./logo_pygcapi.png" align="right" height="200"/>
 
 The **pygcapi** Python library provides an interface to the **Gain Capital API** (V1 and V2), allowing users to perform various trading operations on [Forex.com](https://forex.com). This library includes functionalities for account management, market information retrieval, trading operations, and historical data extraction. It also includes helper utilities and lookup tables to facilitate the interpretation of API responses.
 
