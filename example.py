@@ -1,5 +1,4 @@
-from pygcapi.core import GCapiClient
-import time
+from pygcapi.coreV1 import GCapiClient
 from datetime import datetime, timedelta
 import calendar
 import keyring
