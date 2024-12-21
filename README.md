@@ -15,12 +15,22 @@ By leveraging the extensive Python ecosystem—which includes libraries for data
 - **Helper Functions**: Utilize various helper functions and lookup tables for easier API response interpretation.
 
 ## Installation
+<!---
+
 You can install this package directly from PyPI using `pip`:
 
 ```bash
 pip install pygcapi
 ```
 Or from GitHub:
+
+```bash
+pip install git+https://github.com/athammad/pygcapi.git
+```
+--->
+
+
+You can install this package directly from GitHub:
 
 ```bash
 pip install git+https://github.com/athammad/pygcapi.git

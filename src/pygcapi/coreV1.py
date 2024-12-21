@@ -13,6 +13,13 @@ from pygcapi.utils import (
 )
 
 class GCapiClient:
+
+    """
+    A client for interacting with the Gain Capital API.
+
+    Provides methods to handle trading operations, retrieve market data, account information,
+    trade history, and manage orders and positions.
+    """
     BASE_URL = "https://ciapi.cityindex.com/TradingAPI"
 
     def __init__(self, username: str, password: str, appkey: str):
@@ -57,6 +64,9 @@ class GCapiClient:
     def get_account_info(self, key: Optional[str] = None) -> Any:
         """
         Retrieve account information.
+
+        :param key: Optional key to extract specific information from the account details.
+        :return: Account information as a dictionary or a specific value if a key is provided.
         """
         response = requests.get(f"{self.BASE_URL}/UserAccount/ClientAndTradingAccount", headers=self.headers)
         if response.status_code != 200:
@@ -72,7 +82,11 @@ class GCapiClient:
 
     def get_market_info(self, market_name: str, key: Optional[str] = None) -> Any:
         """
-        Retrieve market information.
+        Retrieve market information based on the market name.
+
+        :param market_name: The name of the market to retrieve information for.
+        :param key: Optional key to extract specific information from the market details.
+        :return: Market information as a dictionary or a specific value if a key is provided.
         """
         params = {"marketName": market_name}
         response = requests.get(f"{self.BASE_URL}/cfd/markets", headers=self.headers, params=params)
@@ -91,7 +105,14 @@ class GCapiClient:
 
     def get_prices(self, market_id: str, num_ticks: int, from_ts: int, to_ts: int, price_type: str = "MID") -> pd.DataFrame:
         """
-        Retrieve price data (tick history) for a given market and return as a DataFrame.
+        Retrieve tick history (price data) for a specific market.
+
+        :param market_id: The market ID for which price data is retrieved.
+        :param num_ticks: The maximum number of ticks to retrieve.
+        :param from_ts: Start timestamp for the data.
+        :param to_ts: End timestamp for the data.
+        :param price_type: The type of price data to retrieve (e.g., "MID", "BID", "ASK").
+        :return: A DataFrame containing the price data.
         """
         params = {
             "fromTimeStampUTC": from_ts,
@@ -128,8 +149,15 @@ class GCapiClient:
                  from_ts: int = None, 
                  to_ts: int = None) -> pd.DataFrame:
         """
-        Retrieve OHLC data for a given market and return as a DataFrame.
-        "MINUTE", "HOUR", "DAY"
+        Retrieve OHLC (Open-High-Low-Close) data for a specific market.
+
+        :param market_id: The market ID for which OHLC data is retrieved.
+        :param num_ticks: The maximum number of OHLC data points to retrieve.
+        :param interval: The time interval of the OHLC data (e.g., "MINUTE", "HOUR", "DAY").
+        :param span: The span size for the given interval.
+        :param from_ts: Start timestamp for the data (optional).
+        :param to_ts: End timestamp for the data (optional).
+        :return: A DataFrame containing the OHLC data.
         """
         params = {
             "interval": interval,
@@ -156,6 +184,12 @@ class GCapiClient:
     def trade_order(self, quantity: float, direction: str, market_id: str, price: float) -> Dict:
         """
         Place a trade order.
+
+        :param quantity: The quantity of the order.
+        :param direction: The direction of the trade ("buy" or "sell").
+        :param market_id: The market ID where the order is placed.
+        :param price: The price at which the order is placed.
+        :return: The response from the API containing order details.
         """
         order = {
             "MarketId": market_id,
@@ -184,6 +218,8 @@ class GCapiClient:
     def list_open_positions(self) -> Dict:
         """
         List all open positions.
+
+        :return: A dictionary containing details of open positions.
         """
         response = requests.get(f"{self.BASE_URL}/order/openpositions", headers=self.headers)
         if response.status_code != 200:
@@ -197,11 +233,30 @@ class GCapiClient:
 
         return positions
 
-    def list_active_orders(self) -> Dict:
+    def list_active_orders(self) -> dict:
         """
         List all active orders.
+
+        :return: A dictionary containing details of active orders.
         """
-        response = requests.get(f"{self.BASE_URL}/order/activeorders", headers=self.headers)
+        url = f"{self.BASE_URL}/order/activeorders"
+        
+        # Create the request body
+        request_body = {
+            "TradingAccountId": self.trading_account_id
+        }
+
+        # Define headers
+        headers = {
+            'Content-Type': 'application/json',
+            'UserName': self.username,
+            'Session': self.session_id
+        }
+
+        # Perform POST request
+        response = requests.post(url, headers=headers, json=request_body)
+
+        # Check for successful response
         if response.status_code != 200:
             raise Exception(f"Failed to retrieve active orders: {response.text}")
 
@@ -215,7 +270,10 @@ class GCapiClient:
 
     def close_all_trades(self, tolerance: float) -> List[Dict]:
         """
-        Close all open trades with a given price tolerance.
+        Close all open trades within a given price tolerance.
+
+        :param tolerance: The price tolerance for closing trades.
+        :return: A list of responses for each closed trade.
         """
         open_positions = self.list_open_positions().get("OpenPositions", [])
 
@@ -244,6 +302,10 @@ class GCapiClient:
     def close_all_trades_new(self, open_positions: List[Dict], tolerance: float) -> List[Dict]:
         """
         Close all trades using a provided list of open positions and a given tolerance.
+
+        :param open_positions: A list of open positions to close.
+        :param tolerance: The price tolerance for closing trades.
+        :return: A list of responses for each closed trade.
         """
         if not open_positions:
             print("No open positions to close.")
@@ -267,10 +329,15 @@ class GCapiClient:
 
         return close_responses
 
-    def get_trade_history(self, from_ts: Optional[str] = None, max_results: int = 100) -> Dict:
+    def get_trade_history(self, from_ts: Optional[str] = None, max_results: int = 100) -> pd.DataFrame:
         """
         Retrieve the trade history for the account.
+
+        :param from_ts: The start timestamp for retrieving trade history (optional).
+        :param max_results: The maximum number of results to retrieve.
+        :return: A DataFrame containing the trade history.
         """
+ 
         params = {"TradingAccountId": self.trading_account_id, "maxResults": max_results}
         if from_ts:
             params["from"] = from_ts
@@ -279,7 +346,8 @@ class GCapiClient:
         if response.status_code != 200:
             raise Exception(f"Failed to retrieve trade history: {response.text}")
 
-        return response.json()
+        data=pd.DataFrame(response.json()['TradeHistory'])
+        return data
 
     def get_long_series(self, market_id: str, n_months: int = 6, by_time: str = '15min', n: int = 3900, interval: str = "MINUTE", span: int = 15) -> pd.DataFrame:
     

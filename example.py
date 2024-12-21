@@ -34,11 +34,21 @@ to_ts = calendar.timegm(datetime.utcnow().utctimetuple())  # Current time
 ohlc = client.get_ohlc(market_id=market_id,from_ts=from_ts,to_ts=to_ts, num_ticks=30,span=1)
 ohlc
 
-#ERROR HERE!!
 client.get_long_series(market_id=market_id, n_months=7, by_time="30min", interval="MINUTE",span=30)
 
 
-from pygcapi.utils import extract_every_nth
+client.get_trade_history()
+
+client.list_active_orders()
+client.list_open_positions()
+
+# To Test
+# close_all_trades_new()
+# close_all_trades()
+# trade_order()
+
+
+from pygcapi.utils import extract_every_nth, convert_to_dataframe
 extract_every_nth(n_months=7, by_time="30min")
 
 
