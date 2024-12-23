@@ -629,3 +629,41 @@ def convert_to_dataframe(data: list) -> pd.DataFrame:
     df = df[cols]
     
     return df
+
+
+def convert_orders_to_dataframe(data):
+    """
+    Convert nested order data to a Pandas DataFrame.
+    
+    Args:
+        data (dict): Nested dictionary containing ActiveOrders data.
+    
+    Returns:
+        pd.DataFrame: Flattened DataFrame with relevant fields.
+    """
+    def convert_date(date_str):
+        """Convert '/Date(timestamp)/' to datetime."""
+        if date_str and date_str.startswith('/Date('):
+            timestamp = int(date_str[6:-2])
+            return pd.to_datetime(timestamp, unit='ms')
+        return None
+
+    # Flatten and extract relevant fields
+    orders = [
+        {
+            **order['TradeOrder'],
+            'StopLimitOrder': order.get('StopLimitOrder'),
+            'OuterTypeId': order.get('TypeId')  # Renaming outer TypeId to avoid overwriting
+        }
+        for order in data.get('ActiveOrders', [])
+    ]
+
+    # Create DataFrame
+    df = pd.DataFrame(orders)
+
+    # Convert date fields to datetime
+    for date_field in ['CreatedDateTimeUTC', 'LastChangedDateTimeUTC', 'ExecutedDateTimeUTC']:
+        if date_field in df.columns:
+            df[date_field] = df[date_field].apply(convert_date)
+
+    return df

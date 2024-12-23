@@ -1,8 +1,8 @@
 from pygcapi.core_v1 import GCapiClientV1
-from pygcapi.core_v2 import GCapiClientV2
 from datetime import datetime, timedelta
 import calendar
 import keyring
+import pandas as pd
 # assuming keyring installed...
 
 # Initialize the GCapiClient
@@ -39,9 +39,9 @@ client.get_long_series(market_id=market_id, n_months=7, by_time="30min", interva
 
 
 client.get_trade_history()
-
-client.list_active_orders()
 client.list_open_positions()
+client.list_active_orders()
+
 
 # To Test
 # close_all_trades_new()
@@ -53,12 +53,15 @@ from pygcapi.utils import extract_every_nth, convert_to_dataframe
 extract_every_nth(n_months=7, by_time="30min")
 
 
-
+from pygcapi.core_v2 import GCapiClientV2
+from datetime import datetime, timedelta
+import calendar
+import keyring
+import pandas as pd
 # Initialize the GCapiClient
 client = GCapiClientV2(username= keyring.get_password("fx_system", "IDLOG"), 
                      password=keyring.get_password("fx_system", "PSWD"), 
                      appkey=keyring.get_password("fx_system", "APKEY"))
-
 
 # Call get_account_info
 client.get_account_info()
@@ -88,9 +91,8 @@ client.get_long_series(market_id=market_id, n_months=7, by_time="30min", interva
 
 
 client.get_trade_history()
-
-client.list_active_orders()
 client.list_open_positions()
+dai=client.list_active_orders()
 
 # To Test
 # close_all_trades_new()

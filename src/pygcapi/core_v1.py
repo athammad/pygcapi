@@ -9,6 +9,7 @@ from pygcapi.utils import (
     get_order_status_reason_description,
     get_order_action_type_description,
     convert_to_dataframe,
+    convert_orders_to_dataframe,
     extract_every_nth
 )
 
@@ -215,11 +216,11 @@ class GCapiClientV1:
 
         return resp_data
 
-    def list_open_positions(self) -> Dict:
+    def list_open_positions(self) -> pd.DataFrame:
         """
         List all open positions.
 
-        :return: A dictionary containing details of open positions.
+        :return: A Data Frame containing details of open positions.
         """
         response = requests.get(f"{self.BASE_URL}/order/openpositions", headers=self.headers)
         if response.status_code != 200:
@@ -231,13 +232,13 @@ class GCapiClientV1:
             reason_desc = get_order_status_reason_description(position.get("StatusReason"))
             print(f"Position ID: {position.get('PositionId')} - Status: {status_desc} - Reason: {reason_desc}")
 
-        return positions
+        return pd.DataFrame(positions["OpenPositions"])
 
-    def list_active_orders(self) -> dict:
+    def list_active_orders(self) -> pd.DataFrame:
         """
         List all active orders.
 
-        :return: A dictionary containing details of active orders.
+        :return: A Data Frame containing details of active orders.
         """
         url = f"{self.BASE_URL}/order/activeorders"
         
@@ -266,7 +267,7 @@ class GCapiClientV1:
             reason_desc = get_order_status_reason_description(order.get("StatusReason"))
             print(f"Order ID: {order.get('OrderId')} - Status: {status_desc} - Reason: {reason_desc}")
 
-        return orders
+        return convert_orders_to_dataframe(orders)
 
     def close_all_trades(self, tolerance: float) -> List[Dict]:
         """

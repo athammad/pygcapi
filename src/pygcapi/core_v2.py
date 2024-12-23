@@ -8,7 +8,9 @@ from pygcapi.utils import (
     get_instruction_status_reason_description,
     get_order_status_description,
     get_order_status_reason_description,
-    convert_to_dataframe
+    convert_to_dataframe,
+    convert_orders_to_dataframe,
+    extract_every_nth
 )
 
 class GCapiClientV2:
@@ -45,10 +47,10 @@ class GCapiClientV2:
             raise Exception(f"Failed to create session: {response.text}")
 
         resp_data = response.json()
-        if 'Session' not in resp_data:
+        if 'session' not in resp_data:
             raise Exception("Login failed, session not created.")
 
-        self.session_id = resp_data['Session']
+        self.session_id = resp_data['session']
         self.headers = {
             'Content-Type': 'application/json',
             'UserName': username,
@@ -204,11 +206,11 @@ class GCapiClientV2:
 
         return resp_data
 
-    def list_open_positions(self) -> Dict:
+    def list_open_positions(self) -> pd.DataFrame:
         """
         List all open positions.
 
-        :return: A dictionary containing all open positions.
+        :return: A Data Frame containing all open positions.
         """
         response = requests.get(f"{self.BASE_URL_V1}/order/openpositions", headers=self.headers)
         if response.status_code != 200:
@@ -220,9 +222,10 @@ class GCapiClientV2:
             reason_desc = get_order_status_reason_description(position.get("StatusReason"))
             print(f"Position ID: {position.get('PositionId')} - Status: {status_desc} - Reason: {reason_desc}")
 
-        return positions
+        return pd.DataFrame(positions["OpenPositions"])
 
-    def get_trade_history(self, from_ts: Optional[str] = None, max_results: int = 100) -> Dict:
+
+    def get_trade_history(self, from_ts: Optional[str] = None, max_results: int = 100) -> pd.DataFrame:
         """
         Retrieve the trade history for the account.
 
@@ -238,7 +241,7 @@ class GCapiClientV2:
         if response.status_code != 200:
             raise Exception(f"Failed to retrieve trade history: {response.text}")
 
-        return response.json()
+        return pd.DataFrame(response.json()['TradeHistory'])
 
     def close_all_trades(self, tolerance: float) -> List[Dict]:
         """
@@ -269,3 +272,83 @@ class GCapiClientV2:
             close_responses.append(response)
 
         return close_responses
+
+    def list_active_orders(self) -> pd.DataFrame:
+        """
+        List all active orders.
+
+        :return: A Data Frame containing details of active orders.
+        """
+        url = f"{self.BASE_URL_V1}/order/activeorders"
+        
+        # Create the request body
+        request_body = {
+            "TradingAccountId": self.trading_account_id
+        }
+
+        # Define headers
+        headers = {
+            'Content-Type': 'application/json',
+            'UserName': self.username,
+            'Session': self.session_id
+        }
+
+        # Perform POST request
+        response = requests.post(url, headers=headers, json=request_body)
+
+        # Check for successful response
+        if response.status_code != 200:
+            raise Exception(f"Failed to retrieve active orders: {response.text}")
+
+        orders = response.json()
+        for order in orders.get("Orders", []):
+            status_desc = get_order_status_description(order.get("Status"))
+            reason_desc = get_order_status_reason_description(order.get("StatusReason"))
+            print(f"Order ID: {order.get('OrderId')} - Status: {status_desc} - Reason: {reason_desc}")
+
+        return convert_orders_to_dataframe(orders)
+
+
+    def get_long_series(self, market_id: str, n_months: int = 6, by_time: str = '15min', n: int = 3900, interval: str = "MINUTE", span: int = 15) -> pd.DataFrame:
+    
+        """
+        Retrieve a long time series of OHLC data by bypassing API limitations.
+        Internally uses get_ohlc to fetch data in chunks across the specified period.
+
+        :param market_id: The market ID for which OHLC data is fetched.
+        :param n_months: Number of months of data to retrieve.
+        :param by_time: The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.).
+        :param n: The maximum number of data points per request.
+        :param interval: The interval of OHLC data (e.g., "MINUTE", "HOUR").
+        :param span: The span size for the given interval.
+        :return: A concatenated DataFrame of all the OHLC data retrieved.
+        """
+        time_intervals = extract_every_nth(n_months=n_months, by_time=by_time, n=n)
+        long_series = []
+
+        for start_ts, stop_ts in time_intervals:
+            # Use the get_ohlc method to fetch data for each chunk
+            try:
+                ohlc_df = self.get_ohlc(
+                    market_id=market_id,
+                    num_ticks=n,
+                    interval=interval,
+                    span=span,
+                    from_ts=start_ts,
+                    to_ts=stop_ts
+                )
+                long_series.append(ohlc_df)
+            except Exception as e:
+                print(f"Failed to retrieve OHLC data for interval {start_ts} - {stop_ts}: {e}")
+                continue
+
+        # Concatenate all DataFrames if we have data
+        if long_series:
+            df = pd.concat(long_series, ignore_index=True)
+            # Remove duplicates if any and sort by BarDate
+            df = df.drop_duplicates().reset_index(drop=True)
+            return df
+        else:
+            print("No data was retrieved.")
+            return pd.DataFrame()
+
