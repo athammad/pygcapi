@@ -42,14 +42,14 @@ To access your trading account, you will need credentials provided by Forex.com,
 
 
 ```python
-from pygcapi.coreV1 import GCapiClient
+from pygcapi.core_v2 import GCapiClientV2
 
 # Replace with your actual credentials
 IDLOG = "your_username"
 PSWD = "your_password"
 APKEY = "your_appkey"
 
-client = GCapiClient(username=IDLOG, password=PSWD, appkey=APKEY)
+client = GCapiClientV2(username=IDLOG, password=PSWD, appkey=APKEY)
 ```
 
 # Example Usage
@@ -114,13 +114,31 @@ print(ohlc.head())
 
 # Place a Trade Order:
 
+pricesB = client.get_prices(market_id=market_id, from_ts=from_ts,to_ts=to_ts, num_ticks=1,price_type="BID")
+pricesA=client.get_prices(market_id=market_id, from_ts=from_ts,to_ts=to_ts, num_ticks=1,price_type="ASK")
+
 trade_resp = client.trade_order(
     quantity=1020,
     direction="buy",
     market_id=market_id,
-    price=current_price
+    market_name=market_name,
+    bid_price=float(pricesB.Price[0]),  # Convert to scalar float
+    offer_price=float(pricesA.Price[0])  # Convert to scalar float
 )
-print(trade_resp)
+
+
+# Close a Trade Order:
+close_resp = client.trade_order(
+    quantity=1020,
+    direction="sell",
+    close=True,
+    order_id=trade_resp.get('OrderId'),
+    market_id=market_id,
+    market_name=market_name,
+    bid_price=float(pricesB.Price[0]),  # Convert to scalar float
+    offer_price=float(pricesA.Price[0])  # Convert to scalar float
+)
+
 
 #List Open Positions:
 
@@ -155,12 +173,3 @@ This package is not supported by `Forex.com`, and the author does not hold any r
 
 https://docs.labs.gaincapital.com/index.html
 
-T0 DO:
-- Structure repo for python lib✅ 
-- Write Class V2
-- Tests
-- Write Documentation
-- Write examples/demo
-- Logo 
-
-✅ ❌✔✗

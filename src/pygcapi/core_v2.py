@@ -8,6 +8,7 @@ from pygcapi.utils import (
     get_instruction_status_reason_description,
     get_order_status_description,
     get_order_status_reason_description,
+    get_order_action_type_description,
     convert_to_dataframe,
     convert_orders_to_dataframe,
     extract_every_nth
@@ -69,8 +70,8 @@ class GCapiClientV2:
             raise Exception(f"Failed to retrieve account info: {response.text}")
 
         account_info = response.json()
-        self.trading_account_id = account_info.get("TradingAccounts", [{}])[0].get("TradingAccountId")
-        self.client_account_id = account_info.get("TradingAccounts", [{}])[0].get("ClientAccountId")
+        self.trading_account_id = account_info.get("tradingAccounts", [{}])[0].get("tradingAccountId")
+        self.client_account_id = account_info.get("tradingAccounts", [{}])[0].get("clientAccountId")
 
         if key:
             return account_info.get("TradingAccounts", [{}])[0].get(key)
@@ -172,39 +173,113 @@ class GCapiClientV2:
         df = convert_to_dataframe(price_bars)
         return df
 
-    def trade_order(self, quantity: float, direction: str, market_id: str, price: float) -> Dict:
+    def trade_order(
+        self,
+        quantity: float,
+        offer_price: float,
+        bid_price: float,
+        direction: str,
+        market_id: str,
+        market_name: str,
+        stop_loss: float = None,
+        take_profit: float = None,
+        trigger_price: float = None,
+        close: bool = False,
+        order_id: str = None,
+        tolerance: float = None,
+    ) -> dict:
         """
         Place a trade order.
 
-        :param quantity: The quantity of the order.
-        :param direction: The direction of the trade ("buy" or "sell").
-        :param market_id: The market ID for the trade.
-        :param price: The price at which to place the trade.
-        :return: Response from the API as a dictionary.
+        :param quantity: Quantity to trade.
+        :param offer_price: Offer price for the trade.
+        :param bid_price: Bid price for the trade.
+        :param direction: Direction of the trade ("buy" or "sell").
+        :param market_id: Market ID.
+        :param market_name: Market name.
+        :param stop_loss: Stop loss price (optional).
+        :param take_profit: Take profit price (optional).
+        :param trigger_price: Trigger price (optional).
+        :param close: Whether to close the trade (optional).
+        :param order_id: Order ID (optional).
+        :param tolerance: Price tolerance (optional).
+        :return: API response as a dictionary.
         """
-        order = {
+        endpoint = "/order/newtradeorder"
+
+        # Adjust bid and offer prices based on tolerance
+        if tolerance is not None:
+            bid_price -= tolerance * 0.0001
+            offer_price += tolerance * 0.0001
+
+        order_details = {
             "MarketId": market_id,
             "Direction": direction,
             "Quantity": quantity,
-            "Price": price,
-            "TradingAccountId": self.trading_account_id
+            "OfferPrice": offer_price,
+            "BidPrice": bid_price,
+            "TradingAccountId": self.trading_account_id,
+            "MarketName": market_name,
+            "AutoRollover": False,
+            "IfDone": [],
+            "OcoOrder": None,
+            "Type": None,
+            "ExpiryDateTimeUTC": None,
+            "Applicability": None,
+            "TriggerPrice": trigger_price,
+            "PositionMethodId": 1,
+            "isTrade": True,
+            "ClientAccountId": self.client_account_id,
         }
 
+        if close:
+            order_details["Close"] = {"OrderId": order_id}
+
+        if stop_loss or take_profit:
+            ifdone_order = {
+                "StopOrder": {
+                    "Price": stop_loss,
+                    "Type": "stop",
+                    "Applicability": "gtc",
+                    "StopType": "loss",
+                } if stop_loss else None,
+                "LimitOrder": {
+                    "Price": take_profit,
+                    "Type": "limit",
+                    "Applicability": "gtc",
+                } if take_profit else None,
+            }
+            order_details["IfDone"].append(ifdone_order)
+
+        body = json.dumps(order_details)
+
         response = requests.post(
-            f"{self.BASE_URL_V1}/order/newtradeorder",
+            f"{self.BASE_URL_V1}{endpoint}",
             headers=self.headers,
-            data=json.dumps(order)
+            data=body,
         )
 
         if response.status_code != 200:
             raise Exception(f"Failed to place trade order: {response.text}")
 
-        resp_data = response.json()
-        status_desc = get_instruction_status_description(resp_data.get("StatusReason"))
-        reason_desc = get_instruction_status_reason_description(resp_data.get("StatusReason"))
+        resp = response.json()
+        print(resp)
+        status_desc = get_instruction_status_description(resp.get("StatusReason"))
+        reason_desc = get_instruction_status_reason_description(resp.get("StatusReason"))
         print(f"Order Status: {status_desc} - {reason_desc}")
 
-        return resp_data
+        if "Orders" in resp:
+            order_status_desc = get_order_status_description(resp["Orders"][0].get("StatusReason"))
+            order_reason_desc = get_order_status_reason_description(resp["Orders"][0].get("StatusReason"))
+            print(f"Order Status: {order_status_desc} - {order_reason_desc}")
+
+            if "Actions" in resp and len(resp["Actions"]) != 0:
+                order_action_type = get_order_action_type_description(resp["Actions"][0].get("OrderActionTypeId"))
+                print(f"Action: {order_action_type}")
+
+            order_details["OrderId"] = resp["Orders"][0].get("OrderId")
+
+        return order_details
 
     def list_open_positions(self) -> pd.DataFrame:
         """
@@ -250,26 +325,47 @@ class GCapiClientV2:
         :param tolerance: The price tolerance for closing trades.
         :return: A list of responses from the API for each trade closure.
         """
-        open_positions = self.list_open_positions().get("OpenPositions", [])
+        # Get all open positions
+        open_positions = self.list_open_positions()
 
-        if not open_positions:
+        if open_positions.empty:
             print("No open positions to close.")
             return []
 
         close_responses = []
-        for position in open_positions:
+
+        for _, position in open_positions.iterrows():
             market_id = position["MarketId"]
+            market_name = position["MarketName"]
             direction = "sell" if position["Direction"] == "buy" else "buy"
             quantity = position["Quantity"]
-            close_price = position.get("Price", 0.0) + tolerance
+            order_id = position["OrderId"]  # Include OrderId for closing the trade
+            bid_price = position.get("Price", 0.0)  # Assuming `Price` is the current price
+            offer_price = bid_price  # Use the same price as both bid and offer initially
 
-            response = self.trade_order(
-                quantity=quantity,
-                direction=direction,
-                market_id=market_id,
-                price=close_price
-            )
-            close_responses.append(response)
+            # Adjust bid and offer prices based on tolerance
+            if tolerance is not None:
+                bid_price -= tolerance * 0.0001
+                offer_price += tolerance * 0.0001
+
+            # Close the trade
+            try:
+                response = self.trade_order(
+                    quantity=quantity,
+                    offer_price=offer_price,
+                    bid_price=bid_price,
+                    direction=direction,
+                    market_id=market_id,
+                    market_name=market_name,
+                    close=True,
+                    order_id=order_id,  # Pass the order_id for closing the trade
+                    tolerance=tolerance,
+                )
+                close_responses.append(response)
+                print(f"Closed trade for MarketId: {market_id}, OrderId: {order_id}, Response: {response}")
+
+            except Exception as e:
+                print(f"Failed to close trade for MarketId: {market_id}, OrderId: {order_id}. Error: {str(e)}")
 
         return close_responses
 
