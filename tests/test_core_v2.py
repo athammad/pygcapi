@@ -10,7 +10,7 @@ except ImportError:
     raise ImportError("Please install requests-mock via `pip install requests-mock`.")
 
 # Import the GCapiClient from your coreV1 module
-from src.pygcapi.core_v1 import GCapiClient
+from src.pygcapi.core_v2 import GCapiClientV2
 
 
 @pytest.fixture

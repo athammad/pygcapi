@@ -12,7 +12,7 @@ from pygcapi.utils import (
     extract_every_nth
 )
 
-class GCapiClient:
+class GCapiClientV1:
 
     """
     A client for interacting with the Gain Capital API.
