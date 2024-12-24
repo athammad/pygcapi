@@ -1,0 +1,34 @@
+# core_v1.GCapiClientV1.trade_order { #pygcapi.core_v1.GCapiClientV1.trade_order }
+
+```python
+core_v1.GCapiClientV1.trade_order(
+    quantity,
+    offer_price,
+    bid_price,
+    direction,
+    market_id,
+    market_name,
+    stop_loss=None,
+    take_profit=None,
+    trigger_price=None,
+    close=False,
+    order_id=None,
+    tolerance=None,
+)
+```
+
+Place a trade order.
+
+:param quantity: Quantity to trade.
+:param offer_price: Offer price for the trade.
+:param bid_price: Bid price for the trade.
+:param direction: Direction of the trade ("buy" or "sell").
+:param market_id: Market ID.
+:param market_name: Market name.
+:param stop_loss: Stop loss price (optional).
+:param take_profit: Take profit price (optional).
+:param trigger_price: Trigger price (optional).
+:param close: Whether to close the trade (optional).
+:param order_id: Order ID (optional).
+:param tolerance: Price tolerance (optional).
+:return: API response as a dictionary.

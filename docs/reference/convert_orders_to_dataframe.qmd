@@ -1,0 +1,13 @@
+# convert_orders_to_dataframe { #pygcapi.utils.convert_orders_to_dataframe }
+
+```python
+utils.convert_orders_to_dataframe(data)
+```
+
+Convert nested order data to a Pandas DataFrame.
+
+Args:
+    data (dict): Nested dictionary containing ActiveOrders data.
+
+Returns:
+    pd.DataFrame: Flattened DataFrame with relevant fields.

@@ -1,0 +1,207 @@
+# core_v2.GCapiClientV2 { #pygcapi.core_v2.GCapiClientV2 }
+
+```python
+core_v2.GCapiClientV2(self, username, password, appkey)
+```
+
+A client for interacting with the Gain Capital API V2.
+
+Provides methods to handle trading operations, retrieve market data, account information,
+trade history, and manage orders and positions.
+
+## Methods
+
+| Name | Description |
+| --- | --- |
+| [close_all_trades](#pygcapi.core_v2.GCapiClientV2.close_all_trades) | Close all open trades with a given price tolerance. |
+| [close_all_trades_new](#pygcapi.core_v2.GCapiClientV2.close_all_trades_new) | Close all trades using a provided list of open positions and a given tolerance. |
+| [get_account_info](#pygcapi.core_v2.GCapiClientV2.get_account_info) | Retrieve account information. |
+| [get_long_series](#pygcapi.core_v2.GCapiClientV2.get_long_series) | Retrieve a long time series of OHLC data by bypassing API limitations. |
+| [get_market_info](#pygcapi.core_v2.GCapiClientV2.get_market_info) | Retrieve market information. |
+| [get_ohlc](#pygcapi.core_v2.GCapiClientV2.get_ohlc) | Retrieve OHLC data for a specific market. |
+| [get_prices](#pygcapi.core_v2.GCapiClientV2.get_prices) | Retrieve tick history (price data) for a specific market. |
+| [get_trade_history](#pygcapi.core_v2.GCapiClientV2.get_trade_history) | Retrieve the trade history for the account. |
+| [list_active_orders](#pygcapi.core_v2.GCapiClientV2.list_active_orders) | List all active orders. |
+| [list_open_positions](#pygcapi.core_v2.GCapiClientV2.list_open_positions) | List all open positions. |
+| [trade_order](#pygcapi.core_v2.GCapiClientV2.trade_order) | Place a trade order. |
+
+### close_all_trades { #pygcapi.core_v2.GCapiClientV2.close_all_trades }
+
+```python
+core_v2.GCapiClientV2.close_all_trades(tolerance)
+```
+
+Close all open trades with a given price tolerance.
+
+:param tolerance: The price tolerance for closing trades.
+:return: A list of responses from the API for each trade closure.
+
+### close_all_trades_new { #pygcapi.core_v2.GCapiClientV2.close_all_trades_new }
+
+```python
+core_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)
+```
+
+Close all trades using a provided list of open positions and a given tolerance.
+
+:param open_positions: A list of open positions to close.
+:param tolerance: The price tolerance for closing trades.
+:return: A list of responses for each closed trade.
+
+### get_account_info { #pygcapi.core_v2.GCapiClientV2.get_account_info }
+
+```python
+core_v2.GCapiClientV2.get_account_info(key=None)
+```
+
+Retrieve account information.
+
+:param key: Optional key to extract specific information from the account details.
+:return: Account information as a dictionary or a specific value if a key is provided.
+
+### get_long_series { #pygcapi.core_v2.GCapiClientV2.get_long_series }
+
+```python
+core_v2.GCapiClientV2.get_long_series(
+    market_id,
+    n_months=6,
+    by_time='15min',
+    n=3900,
+    interval='MINUTE',
+    span=15,
+)
+```
+
+Retrieve a long time series of OHLC data by bypassing API limitations.
+Internally uses get_ohlc to fetch data in chunks across the specified period.
+
+:param market_id: The market ID for which OHLC data is fetched.
+:param n_months: Number of months of data to retrieve.
+:param by_time: The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.).
+:param n: The maximum number of data points per request.
+:param interval: The interval of OHLC data (e.g., "MINUTE", "HOUR").
+:param span: The span size for the given interval.
+:return: A concatenated DataFrame of all the OHLC data retrieved.
+
+### get_market_info { #pygcapi.core_v2.GCapiClientV2.get_market_info }
+
+```python
+core_v2.GCapiClientV2.get_market_info(market_name, key=None)
+```
+
+Retrieve market information.
+
+:param market_name: The name of the market to retrieve information for.
+:param key: Optional key to extract specific information from the market details.
+:return: Market information as a dictionary or a specific value if a key is provided.
+
+### get_ohlc { #pygcapi.core_v2.GCapiClientV2.get_ohlc }
+
+```python
+core_v2.GCapiClientV2.get_ohlc(
+    market_id,
+    num_ticks,
+    interval='HOUR',
+    span=1,
+    from_ts=None,
+    to_ts=None,
+)
+```
+
+Retrieve OHLC data for a specific market.
+
+:param market_id: The market ID for which OHLC data is retrieved.
+:param num_ticks: The maximum number of OHLC data points to retrieve.
+:param interval: The time interval of the OHLC data (e.g., "MINUTE", "HOUR", "DAY").
+:param span: The span size for the given interval.
+:param from_ts: Start timestamp for the data.
+:param to_ts: End timestamp for the data.
+:return: A DataFrame containing the OHLC data.
+
+### get_prices { #pygcapi.core_v2.GCapiClientV2.get_prices }
+
+```python
+core_v2.GCapiClientV2.get_prices(
+    market_id,
+    num_ticks,
+    from_ts,
+    to_ts,
+    price_type='MID',
+)
+```
+
+Retrieve tick history (price data) for a specific market.
+
+:param market_id: The market ID for which price data is retrieved.
+:param num_ticks: The maximum number of ticks to retrieve.
+:param from_ts: Start timestamp for the data.
+:param to_ts: End timestamp for the data.
+:param price_type: The type of price data to retrieve (e.g., "MID", "BID", "ASK").
+:return: A DataFrame containing the price data.
+
+### get_trade_history { #pygcapi.core_v2.GCapiClientV2.get_trade_history }
+
+```python
+core_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)
+```
+
+Retrieve the trade history for the account.
+
+:param from_ts: Optional start timestamp for the history.
+:param max_results: Maximum number of results to retrieve.
+:return: A dictionary containing the trade history.
+
+### list_active_orders { #pygcapi.core_v2.GCapiClientV2.list_active_orders }
+
+```python
+core_v2.GCapiClientV2.list_active_orders()
+```
+
+List all active orders.
+
+:return: A Data Frame containing details of active orders.
+
+### list_open_positions { #pygcapi.core_v2.GCapiClientV2.list_open_positions }
+
+```python
+core_v2.GCapiClientV2.list_open_positions()
+```
+
+List all open positions.
+
+:return: A Data Frame containing all open positions.
+
+### trade_order { #pygcapi.core_v2.GCapiClientV2.trade_order }
+
+```python
+core_v2.GCapiClientV2.trade_order(
+    quantity,
+    offer_price,
+    bid_price,
+    direction,
+    market_id,
+    market_name,
+    stop_loss=None,
+    take_profit=None,
+    trigger_price=None,
+    close=False,
+    order_id=None,
+    tolerance=None,
+)
+```
+
+Place a trade order.
+
+:param quantity: Quantity to trade.
+:param offer_price: Offer price for the trade.
+:param bid_price: Bid price for the trade.
+:param direction: Direction of the trade ("buy" or "sell").
+:param market_id: Market ID.
+:param market_name: Market name.
+:param stop_loss: Stop loss price (optional).
+:param take_profit: Take profit price (optional).
+:param trigger_price: Trigger price (optional).
+:param close: Whether to close the trade (optional).
+:param order_id: Order ID (optional).
+:param tolerance: Price tolerance (optional).
+:return: API response as a dictionary.

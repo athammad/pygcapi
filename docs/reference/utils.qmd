@@ -1,0 +1,92 @@
+# utils { #pygcapi.utils }
+
+`utils`
+
+
+
+## Functions
+
+| Name | Description |
+| --- | --- |
+| [convert_orders_to_dataframe](#pygcapi.utils.convert_orders_to_dataframe) | Convert nested order data to a Pandas DataFrame. |
+| [convert_to_dataframe](#pygcapi.utils.convert_to_dataframe) | Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame |
+| [extract_every_nth](#pygcapi.utils.extract_every_nth) | Generate start and stop Unix UTC timestamps for API requests. |
+| [get_instruction_status_description](#pygcapi.utils.get_instruction_status_description) | Retrieve the description of an instruction status code. |
+| [get_instruction_status_reason_description](#pygcapi.utils.get_instruction_status_reason_description) | Retrieve the description of an instruction status reason code. |
+| [get_order_action_type_description](#pygcapi.utils.get_order_action_type_description) | Retrieve the description of an order action type code. |
+| [get_order_status_description](#pygcapi.utils.get_order_status_description) | Retrieve the description of an order status code. |
+| [get_order_status_reason_description](#pygcapi.utils.get_order_status_reason_description) | Retrieve the description of an order status reason code. |
+
+### convert_orders_to_dataframe { #pygcapi.utils.convert_orders_to_dataframe }
+
+```python
+utils.convert_orders_to_dataframe(data)
+```
+
+Convert nested order data to a Pandas DataFrame.
+
+Args:
+    data (dict): Nested dictionary containing ActiveOrders data.
+
+Returns:
+    pd.DataFrame: Flattened DataFrame with relevant fields.
+
+### convert_to_dataframe { #pygcapi.utils.convert_to_dataframe }
+
+```python
+utils.convert_to_dataframe(data)
+```
+
+Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame
+with a nicely formatted datetime column.
+
+:param data: A list of dictionaries, each containing 'BarDate' or 'TickDate' keys with '/Date(...)' format.
+:return: A pandas DataFrame with a 'Date' column as a datetime and other columns as numeric data.
+
+### extract_every_nth { #pygcapi.utils.extract_every_nth }
+
+```python
+utils.extract_every_nth(n_months=6, by_time='15min', n=3900)
+```
+
+Generate start and stop Unix UTC timestamps for API requests.
+
+### get_instruction_status_description { #pygcapi.utils.get_instruction_status_description }
+
+```python
+utils.get_instruction_status_description(status_code)
+```
+
+Retrieve the description of an instruction status code.
+
+### get_instruction_status_reason_description { #pygcapi.utils.get_instruction_status_reason_description }
+
+```python
+utils.get_instruction_status_reason_description(reason_code)
+```
+
+Retrieve the description of an instruction status reason code.
+
+### get_order_action_type_description { #pygcapi.utils.get_order_action_type_description }
+
+```python
+utils.get_order_action_type_description(action_type_code)
+```
+
+Retrieve the description of an order action type code.
+
+### get_order_status_description { #pygcapi.utils.get_order_status_description }
+
+```python
+utils.get_order_status_description(status_code)
+```
+
+Retrieve the description of an order status code.
+
+### get_order_status_reason_description { #pygcapi.utils.get_order_status_reason_description }
+
+```python
+utils.get_order_status_reason_description(reason_code)
+```
+
+Retrieve the description of an order status reason code.

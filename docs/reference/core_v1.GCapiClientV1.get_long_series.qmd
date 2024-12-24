@@ -1,0 +1,23 @@
+# core_v1.GCapiClientV1.get_long_series { #pygcapi.core_v1.GCapiClientV1.get_long_series }
+
+```python
+core_v1.GCapiClientV1.get_long_series(
+    market_id,
+    n_months=6,
+    by_time='15min',
+    n=3900,
+    interval='MINUTE',
+    span=15,
+)
+```
+
+Retrieve a long time series of OHLC data by bypassing API limitations.
+Internally uses get_ohlc to fetch data in chunks across the specified period.
+
+:param market_id: The market ID for which OHLC data is fetched.
+:param n_months: Number of months of data to retrieve.
+:param by_time: The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.).
+:param n: The maximum number of data points per request.
+:param interval: The interval of OHLC data (e.g., "MINUTE", "HOUR").
+:param span: The span size for the given interval.
+:return: A concatenated DataFrame of all the OHLC data retrieved.

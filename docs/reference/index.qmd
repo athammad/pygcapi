@@ -1,0 +1,50 @@
+# Function reference {.doc .doc-index}
+
+## GCapiClientV1
+
+V1 Methods.
+
+| | |
+| --- | --- |
+| [get_market_info](get_market_info.qmd#pygcapi.core_v1.GCapiClientV1.get_market_info) | Retrieve market information based on the market name. |
+| [get_ohlc](get_ohlc.qmd#pygcapi.core_v1.GCapiClientV1.get_ohlc) | Retrieve OHLC (Open-High-Low-Close) data for a specific market. |
+| [get_prices](get_prices.qmd#pygcapi.core_v1.GCapiClientV1.get_prices) | Retrieve tick history (price data) for a specific market. |
+| [get_long_series](get_long_series.qmd#pygcapi.core_v1.GCapiClientV1.get_long_series) | Retrieve a long time series of OHLC data by bypassing API limitations. |
+| [list_active_orders](list_active_orders.qmd#pygcapi.core_v1.GCapiClientV1.list_active_orders) | List all active orders. |
+| [list_open_positions](list_open_positions.qmd#pygcapi.core_v1.GCapiClientV1.list_open_positions) | List all open positions. |
+| [get_trade_history](get_trade_history.qmd#pygcapi.core_v1.GCapiClientV1.get_trade_history) | Retrieve the trade history for the account. |
+| [trade_order](trade_order.qmd#pygcapi.core_v1.GCapiClientV1.trade_order) | Place a trade order. |
+| [close_all_trades](close_all_trades.qmd#pygcapi.core_v1.GCapiClientV1.close_all_trades) | Close all open trades with a given price tolerance. |
+| [close_all_trades_new](close_all_trades_new.qmd#pygcapi.core_v1.GCapiClientV1.close_all_trades_new) | Close all trades using a provided list of open positions and a given tolerance. |
+
+## GCapiClientV2
+
+V2 Methods.
+
+| | |
+| --- | --- |
+| [get_market_info](get_market_info.qmd#pygcapi.core_v2.GCapiClientV2.get_market_info) | Retrieve market information. |
+| [get_ohlc](get_ohlc.qmd#pygcapi.core_v2.GCapiClientV2.get_ohlc) | Retrieve OHLC data for a specific market. |
+| [get_prices](get_prices.qmd#pygcapi.core_v2.GCapiClientV2.get_prices) | Retrieve tick history (price data) for a specific market. |
+| [get_long_series](get_long_series.qmd#pygcapi.core_v2.GCapiClientV2.get_long_series) | Retrieve a long time series of OHLC data by bypassing API limitations. |
+| [list_active_orders](list_active_orders.qmd#pygcapi.core_v2.GCapiClientV2.list_active_orders) | List all active orders. |
+| [list_open_positions](list_open_positions.qmd#pygcapi.core_v2.GCapiClientV2.list_open_positions) | List all open positions. |
+| [get_trade_history](get_trade_history.qmd#pygcapi.core_v2.GCapiClientV2.get_trade_history) | Retrieve the trade history for the account. |
+| [trade_order](trade_order.qmd#pygcapi.core_v2.GCapiClientV2.trade_order) | Place a trade order. |
+| [close_all_trades](close_all_trades.qmd#pygcapi.core_v2.GCapiClientV2.close_all_trades) | Close all open trades with a given price tolerance. |
+| [close_all_trades_new](close_all_trades_new.qmd#pygcapi.core_v2.GCapiClientV2.close_all_trades_new) | Close all trades using a provided list of open positions and a given tolerance. |
+
+## utils
+
+various helper functions.
+
+| | |
+| --- | --- |
+| [convert_orders_to_dataframe](convert_orders_to_dataframe.qmd#pygcapi.utils.convert_orders_to_dataframe) | Convert nested order data to a Pandas DataFrame. |
+| [convert_to_dataframe](convert_to_dataframe.qmd#pygcapi.utils.convert_to_dataframe) | Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame |
+| [extract_every_nth](extract_every_nth.qmd#pygcapi.utils.extract_every_nth) | Generate start and stop Unix UTC timestamps for API requests. |
+| [get_instruction_status_description](get_instruction_status_description.qmd#pygcapi.utils.get_instruction_status_description) | Retrieve the description of an instruction status code. |
+| [get_instruction_status_reason_description](get_instruction_status_reason_description.qmd#pygcapi.utils.get_instruction_status_reason_description) | Retrieve the description of an instruction status reason code. |
+| [get_order_action_type_description](get_order_action_type_description.qmd#pygcapi.utils.get_order_action_type_description) | Retrieve the description of an order action type code. |
+| [get_order_status_description](get_order_status_description.qmd#pygcapi.utils.get_order_status_description) | Retrieve the description of an order status code. |
+| [get_order_status_reason_description](get_order_status_reason_description.qmd#pygcapi.utils.get_order_status_reason_description) | Retrieve the description of an order status reason code. |

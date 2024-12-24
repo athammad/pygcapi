@@ -1,0 +1,119 @@
+project:
+  type: website
+
+# website:
+#   title: "pygcapi"
+#   description: "Python library provides an interface to the Gain Capital API (V1 and V2), allowing users to perform various trading operations on Forex.com."
+#   repo-url: https://github.com/athammad/pygcapi
+#   page-navigation: true
+#   favicon: "logo_pygcapi.png"
+#   background: primary
+#   search: true
+#   left:
+#     - text: "Home"
+#       file: index.qmd
+#     - text: "Reference"
+#       file: reference/index.qmd
+
+website:
+  title: "pygcapi"
+  description: "Python library provides an interface to the Gain Capital API (V1 and V2), allowing users to perform various trading operations on Forex.com."
+  repo-url: https://github.com/athammad/pygcapi
+  page-navigation: true
+  favicon: "logo_pygcapi.png"
+  page-footer:
+    center: |
+      Developed by by
+      [Ahmed T. Hammad](https://athsas.com/)
+  navbar:
+    background: "#f1bc20"
+    pinned: true
+    logo: "logo_pygcapi.png"
+    logo-alt: "pygcapi-home"
+    search: true
+    left:
+      - text: "Reference"
+        file: reference/index.qmd
+ #     - text: "Advanced Usage"
+ #       menu:
+ #         - custom_code.qmd
+      - text: "Learn more"
+        menu:
+          - text: "Ahmed T. Hammad"
+            href: https://athsas.com/
+            target: _blank
+          - text: "R package"
+            href: https://github.com/athammad/rgcapi
+            target: _blank
+          - text: "Gaincapital Docs"
+            href: https://docs.labs.gaincapital.com/index.html
+            target: _blank
+    right:
+      - icon: github
+        href: https://github.com/athammad/pygcapi
+        aria-label: pygcapi python GitHub
+# tell quarto to read the generated sidebar
+# metadata-files:
+#   - api/_sidebar.yml
+
+# tell quarto to read the generated styles
+# format:
+#   css:
+#     - api/_styles-quartodoc.css
+
+quartodoc:
+  # the name used to import the package you want to create reference docs for
+  package: pygcapi
+
+  sidebar: _sidebar.yml 
+  # write sidebar and style data
+  #sidebar: api/_sidebar.yml
+  #css: api/_styles-quartodoc.css
+
+  sections:
+    - title: GCapiClientV1
+      desc: V1 Methods.
+      package: pygcapi.core_v1.GCapiClientV1
+      contents:
+        # the functions being documented in the package.
+        # you can refer to anything: class methods, modules, etc..
+        - get_market_info
+        - get_ohlc
+        - get_prices
+        - get_long_series
+        - list_active_orders
+        - list_open_positions
+        - get_trade_history
+        - trade_order
+        - close_all_trades
+        - close_all_trades_new
+    - title: GCapiClientV2
+      desc: V2 Methods.
+      package: pygcapi.core_v2.GCapiClientV2
+      contents:
+        # the functions being documented in the package.
+        # you can refer to anything: class methods, modules, etc..
+        - get_market_info
+        - get_ohlc
+        - get_prices
+        - get_long_series
+        - list_active_orders
+        - list_open_positions
+        - get_trade_history
+        - trade_order
+        - close_all_trades
+        - close_all_trades_new
+    - title: utils
+      desc: various helper functions.
+      package: pygcapi.utils
+      contents:
+        # the functions being documented in the package.
+        # you can refer to anything: class methods, modules, etc..
+        - convert_orders_to_dataframe
+        - convert_to_dataframe
+        - extract_every_nth
+        - get_instruction_status_description
+        - get_instruction_status_reason_description
+        - get_order_action_type_description
+        - get_order_status_description
+        - get_order_status_reason_description

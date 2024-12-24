@@ -1,0 +1,9 @@
+# core_v1.GCapiClientV1.list_open_positions { #pygcapi.core_v1.GCapiClientV1.list_open_positions }
+
+```python
+core_v1.GCapiClientV1.list_open_positions()
+```
+
+List all open positions.
+
+:return: A Data Frame containing details of open positions.

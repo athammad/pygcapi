@@ -15,6 +15,14 @@ from pygcapi.utils import (
 )
 
 class GCapiClientV2:
+    
+    """
+    A client for interacting with the Gain Capital API V2.
+
+    Provides methods to handle trading operations, retrieve market data, account information,
+    trade history, and manage orders and positions.
+    """
+        
     BASE_URL_V1 = "https://ciapi.cityindex.com/TradingAPI"
     BASE_URL_V2 = "https://ciapi.cityindex.com/v2"
 
@@ -368,6 +376,37 @@ class GCapiClientV2:
                 print(f"Failed to close trade for MarketId: {market_id}, OrderId: {order_id}. Error: {str(e)}")
 
         return close_responses
+    
+    def close_all_trades_new(self, open_positions: List[Dict], tolerance: float) -> List[Dict]:
+        """
+        Close all trades using a provided list of open positions and a given tolerance.
+
+        :param open_positions: A list of open positions to close.
+        :param tolerance: The price tolerance for closing trades.
+        :return: A list of responses for each closed trade.
+        """
+        if not open_positions:
+            print("No open positions to close.")
+            return []
+
+        close_responses = []
+        for position in open_positions:
+            market_id = position["MarketId"]
+            direction = "sell" if position["Direction"] == "buy" else "buy"
+            quantity = position["Quantity"]
+            # Add tolerance to the price if needed
+            close_price = position.get("Price", 0.0) + tolerance
+
+            response = self.trade_order(
+                quantity=quantity,
+                direction=direction,
+                market_id=market_id,
+                price=close_price
+            )
+            close_responses.append(response)
+
+        return close_responses
+
 
     def list_active_orders(self) -> pd.DataFrame:
         """

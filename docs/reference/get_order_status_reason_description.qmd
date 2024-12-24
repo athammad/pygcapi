@@ -1,0 +1,7 @@
+# get_order_status_reason_description { #pygcapi.utils.get_order_status_reason_description }
+
+```python
+utils.get_order_status_reason_description(reason_code)
+```
+
+Retrieve the description of an order status reason code.

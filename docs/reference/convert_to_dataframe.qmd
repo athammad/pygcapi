@@ -1,0 +1,11 @@
+# convert_to_dataframe { #pygcapi.utils.convert_to_dataframe }
+
+```python
+utils.convert_to_dataframe(data)
+```
+
+Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame
+with a nicely formatted datetime column.
+
+:param data: A list of dictionaries, each containing 'BarDate' or 'TickDate' keys with '/Date(...)' format.
+:return: A pandas DataFrame with a 'Date' column as a datetime and other columns as numeric data.

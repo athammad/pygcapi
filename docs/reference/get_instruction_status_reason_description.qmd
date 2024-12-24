@@ -1,0 +1,7 @@
+# get_instruction_status_reason_description { #pygcapi.utils.get_instruction_status_reason_description }
+
+```python
+utils.get_instruction_status_reason_description(reason_code)
+```
+
+Retrieve the description of an instruction status reason code.

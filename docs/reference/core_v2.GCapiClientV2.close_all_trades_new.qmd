@@ -1,0 +1,11 @@
+# core_v2.GCapiClientV2.close_all_trades_new { #pygcapi.core_v2.GCapiClientV2.close_all_trades_new }
+
+```python
+core_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)
+```
+
+Close all trades using a provided list of open positions and a given tolerance.
+
+:param open_positions: A list of open positions to close.
+:param tolerance: The price tolerance for closing trades.
+:return: A list of responses for each closed trade.

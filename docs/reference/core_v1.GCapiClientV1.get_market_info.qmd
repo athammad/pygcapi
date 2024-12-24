@@ -1,0 +1,11 @@
+# core_v1.GCapiClientV1.get_market_info { #pygcapi.core_v1.GCapiClientV1.get_market_info }
+
+```python
+core_v1.GCapiClientV1.get_market_info(market_name, key=None)
+```
+
+Retrieve market information based on the market name.
+
+:param market_name: The name of the market to retrieve information for.
+:param key: Optional key to extract specific information from the market details.
+:return: Market information as a dictionary or a specific value if a key is provided.

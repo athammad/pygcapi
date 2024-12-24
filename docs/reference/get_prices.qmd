@@ -1,0 +1,20 @@
+# get_prices { #pygcapi.core_v2.GCapiClientV2.get_prices }
+
+```python
+core_v2.GCapiClientV2.get_prices(
+    market_id,
+    num_ticks,
+    from_ts,
+    to_ts,
+    price_type='MID',
+)
+```
+
+Retrieve tick history (price data) for a specific market.
+
+:param market_id: The market ID for which price data is retrieved.
+:param num_ticks: The maximum number of ticks to retrieve.
+:param from_ts: Start timestamp for the data.
+:param to_ts: End timestamp for the data.
+:param price_type: The type of price data to retrieve (e.g., "MID", "BID", "ASK").
+:return: A DataFrame containing the price data.

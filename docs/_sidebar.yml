@@ -1,0 +1,40 @@
+website:
+  sidebar:
+  - contents:
+    - reference/index.qmd
+    - contents:
+      - reference/get_market_info.qmd
+      - reference/get_ohlc.qmd
+      - reference/get_prices.qmd
+      - reference/get_long_series.qmd
+      - reference/list_active_orders.qmd
+      - reference/list_open_positions.qmd
+      - reference/get_trade_history.qmd
+      - reference/trade_order.qmd
+      - reference/close_all_trades.qmd
+      - reference/close_all_trades_new.qmd
+      section: GCapiClientV1
+    - contents:
+      - reference/get_market_info.qmd
+      - reference/get_ohlc.qmd
+      - reference/get_prices.qmd
+      - reference/get_long_series.qmd
+      - reference/list_active_orders.qmd
+      - reference/list_open_positions.qmd
+      - reference/get_trade_history.qmd
+      - reference/trade_order.qmd
+      - reference/close_all_trades.qmd
+      - reference/close_all_trades_new.qmd
+      section: GCapiClientV2
+    - contents:
+      - reference/convert_orders_to_dataframe.qmd
+      - reference/convert_to_dataframe.qmd
+      - reference/extract_every_nth.qmd
+      - reference/get_instruction_status_description.qmd
+      - reference/get_instruction_status_reason_description.qmd
+      - reference/get_order_action_type_description.qmd
+      - reference/get_order_status_description.qmd
+      - reference/get_order_status_reason_description.qmd
+      section: utils
+    id: reference
+  - id: dummy-sidebar

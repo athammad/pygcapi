@@ -1,0 +1,11 @@
+# core_v2.GCapiClientV2.get_trade_history { #pygcapi.core_v2.GCapiClientV2.get_trade_history }
+
+```python
+core_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)
+```
+
+Retrieve the trade history for the account.
+
+:param from_ts: Optional start timestamp for the history.
+:param max_results: Maximum number of results to retrieve.
+:return: A dictionary containing the trade history.

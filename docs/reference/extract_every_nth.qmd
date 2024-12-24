@@ -1,0 +1,7 @@
+# extract_every_nth { #pygcapi.utils.extract_every_nth }
+
+```python
+utils.extract_every_nth(n_months=6, by_time='15min', n=3900)
+```
+
+Generate start and stop Unix UTC timestamps for API requests.

@@ -1,0 +1,22 @@
+# core_v1.GCapiClientV1.get_ohlc { #pygcapi.core_v1.GCapiClientV1.get_ohlc }
+
+```python
+core_v1.GCapiClientV1.get_ohlc(
+    market_id,
+    num_ticks,
+    interval='HOUR',
+    span=1,
+    from_ts=None,
+    to_ts=None,
+)
+```
+
+Retrieve OHLC (Open-High-Low-Close) data for a specific market.
+
+:param market_id: The market ID for which OHLC data is retrieved.
+:param num_ticks: The maximum number of OHLC data points to retrieve.
+:param interval: The time interval of the OHLC data (e.g., "MINUTE", "HOUR", "DAY").
+:param span: The span size for the given interval.
+:param from_ts: Start timestamp for the data (optional).
+:param to_ts: End timestamp for the data (optional).
+:return: A DataFrame containing the OHLC data.

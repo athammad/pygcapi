@@ -1,0 +1,9 @@
+# list_active_orders { #pygcapi.core_v2.GCapiClientV2.list_active_orders }
+
+```python
+core_v2.GCapiClientV2.list_active_orders()
+```
+
+List all active orders.
+
+:return: A Data Frame containing details of active orders.

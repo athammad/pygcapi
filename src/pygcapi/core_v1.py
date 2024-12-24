@@ -16,7 +16,7 @@ from pygcapi.utils import (
 class GCapiClientV1:
 
     """
-    A client for interacting with the Gain Capital API.
+    A client for interacting with the Gain Capital API V1.
 
     Provides methods to handle trading operations, retrieve market data, account information,
     trade history, and manage orders and positions.

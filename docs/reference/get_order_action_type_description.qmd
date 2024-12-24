@@ -1,0 +1,7 @@
+# get_order_action_type_description { #pygcapi.utils.get_order_action_type_description }
+
+```python
+utils.get_order_action_type_description(action_type_code)
+```
+
+Retrieve the description of an order action type code.
