@@ -167,9 +167,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>close_all_trades_new</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>core_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Close all trades using a provided list of open positions and a given tolerance.</p>
-<p>:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 16%">
+<col style="width: 49%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>open_positions</td>
+<td>List[Dict]</td>
+<td>A list of open positions to close.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>tolerance</td>
+<td>float</td>
+<td>The price tolerance for closing trades.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>List[Dict]</td>
+<td>A list of responses for each closed trade.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

@@ -6,4 +6,8 @@ core_v2.GCapiClientV2.list_open_positions()
 
 List all open positions.
 
-:return: A Data Frame containing all open positions.
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                 |
+|--------|--------------|---------------------------------------------|
+|        | pd.DataFrame | A Data Frame containing all open positions. |

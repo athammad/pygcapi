@@ -6,6 +6,15 @@ core_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)
 
 Retrieve the trade history for the account.
 
-:param from_ts: Optional start timestamp for the history.
-:param max_results: Maximum number of results to retrieve.
-:return: A dictionary containing the trade history.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name        | Type            | Description                               | Default   |
+|-------------|-----------------|-------------------------------------------|-----------|
+| from_ts     | Optional\[str\] | Optional start timestamp for the history. | `None`    |
+| max_results | int             | Maximum number of results to retrieve.    | `100`     |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                |
+|--------|--------------|--------------------------------------------|
+|        | pd.DataFrame | A dictionary containing the trade history. |

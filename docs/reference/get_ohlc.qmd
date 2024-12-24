@@ -13,10 +13,19 @@ core_v2.GCapiClientV2.get_ohlc(
 
 Retrieve OHLC data for a specific market.
 
-:param market_id: The market ID for which OHLC data is retrieved.
-:param num_ticks: The maximum number of OHLC data points to retrieve.
-:param interval: The time interval of the OHLC data (e.g., "MINUTE", "HOUR", "DAY").
-:param span: The span size for the given interval.
-:param from_ts: Start timestamp for the data.
-:param to_ts: End timestamp for the data.
-:return: A DataFrame containing the OHLC data.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type   | Description                                                         | Default    |
+|-----------|--------|---------------------------------------------------------------------|------------|
+| market_id | str    | The market ID for which OHLC data is retrieved.                     | _required_ |
+| num_ticks | int    | The maximum number of OHLC data points to retrieve.                 | _required_ |
+| interval  | str    | The time interval of the OHLC data (e.g., "MINUTE", "HOUR", "DAY"). | `'HOUR'`   |
+| span      | int    | The span size for the given interval.                               | `1`        |
+| from_ts   | int    | Start timestamp for the data.                                       | `None`     |
+| to_ts     | int    | End timestamp for the data.                                         | `None`     |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                           |
+|--------|--------------|---------------------------------------|
+|        | pd.DataFrame | A DataFrame containing the OHLC data. |

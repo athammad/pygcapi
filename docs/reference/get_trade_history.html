@@ -167,9 +167,60 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>get_trade_history</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>core_v2.GCapiClientV2.get_trade_history(from_ts<span class="op">=</span><span class="va">None</span>, max_results<span class="op">=</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Retrieve the trade history for the account.</p>
-<p>:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 20%">
+<col style="width: 51%">
+<col style="width: 13%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>from_ts</td>
+<td>Optional[str]</td>
+<td>Optional start timestamp for the history.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>max_results</td>
+<td>int</td>
+<td>Maximum number of results to retrieve.</td>
+<td><code>100</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>pd.DataFrame</td>
+<td>A dictionary containing the trade history.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

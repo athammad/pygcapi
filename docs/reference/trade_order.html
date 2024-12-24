@@ -180,9 +180,120 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>    tolerance<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Place a trade order.</p>
-<p>:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 10%">
+<col style="width: 55%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>quantity</td>
+<td>float</td>
+<td>Quantity to trade.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>offer_price</td>
+<td>float</td>
+<td>Offer price for the trade.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>bid_price</td>
+<td>float</td>
+<td>Bid price for the trade.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>direction</td>
+<td>str</td>
+<td>Direction of the trade (“buy” or “sell”).</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>market_id</td>
+<td>str</td>
+<td>Market ID.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>market_name</td>
+<td>str</td>
+<td>Market name.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>stop_loss</td>
+<td>float</td>
+<td>Stop loss price (optional).</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>take_profit</td>
+<td>float</td>
+<td>Take profit price (optional).</td>
+<td><code>None</code></td>
+</tr>
+<tr class="odd">
+<td>trigger_price</td>
+<td>float</td>
+<td>Trigger price (optional).</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>close</td>
+<td>bool</td>
+<td>Whether to close the trade (optional).</td>
+<td><code>False</code></td>
+</tr>
+<tr class="odd">
+<td>order_id</td>
+<td>str</td>
+<td>Order ID (optional).</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>tolerance</td>
+<td>float</td>
+<td>Price tolerance (optional).</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>dict</td>
+<td>API response as a dictionary.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

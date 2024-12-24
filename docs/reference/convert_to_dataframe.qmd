@@ -7,5 +7,14 @@ utils.convert_to_dataframe(data)
 Convert a list of dictionaries with a '/Date(...)' timestamp into a pandas DataFrame
 with a nicely formatted datetime column.
 
-:param data: A list of dictionaries, each containing 'BarDate' or 'TickDate' keys with '/Date(...)' format.
-:return: A pandas DataFrame with a 'Date' column as a datetime and other columns as numeric data.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name   | Type   | Description                                                                                    | Default    |
+|--------|--------|------------------------------------------------------------------------------------------------|------------|
+| data   | list   | A list of dictionaries, each containing 'BarDate' or 'TickDate' keys with '/Date(...)' format. | _required_ |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                                                              |
+|--------|--------------|------------------------------------------------------------------------------------------|
+|        | pd.DataFrame | A pandas DataFrame with a 'Date' column as a datetime and other columns as numeric data. |

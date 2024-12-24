@@ -214,70 +214,196 @@
     "href": "reference/get_market_info.html",
     "title": "get_market_info",
     "section": "",
-    "text": "get_market_info\ncore_v2.GCapiClientV2.get_market_info(market_name, key=None)\nRetrieve market information.\n:param market_name: The name of the market to retrieve information for. :param key: Optional key to extract specific information from the market details. :return: Market information as a dictionary or a specific value if a key is provided."
+    "text": "core_v2.GCapiClientV2.get_market_info(market_name, key=None)\nRetrieve market information.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmarket_name\nstr\nThe name of the market to retrieve information for.\nrequired\n\n\nkey\nOptional[str]\nOptional key to extract specific information from the market details.\nNone\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nAny\nMarket information as a dictionary or a specific value if a key is provided."
+  },
+  {
+    "objectID": "reference/get_market_info.html#parameters",
+    "href": "reference/get_market_info.html#parameters",
+    "title": "get_market_info",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmarket_name\nstr\nThe name of the market to retrieve information for.\nrequired\n\n\nkey\nOptional[str]\nOptional key to extract specific information from the market details.\nNone"
+  },
+  {
+    "objectID": "reference/get_market_info.html#returns",
+    "href": "reference/get_market_info.html#returns",
+    "title": "get_market_info",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nAny\nMarket information as a dictionary or a specific value if a key is provided."
   },
   {
     "objectID": "reference/get_ohlc.html",
     "href": "reference/get_ohlc.html",
     "title": "get_ohlc",
     "section": "",
-    "text": "get_ohlc\ncore_v2.GCapiClientV2.get_ohlc(\n    market_id,\n    num_ticks,\n    interval='HOUR',\n    span=1,\n    from_ts=None,\n    to_ts=None,\n)\nRetrieve OHLC data for a specific market.\n:param market_id: The market ID for which OHLC data is retrieved. :param num_ticks: The maximum number of OHLC data points to retrieve. :param interval: The time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”). :param span: The span size for the given interval. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :return: A DataFrame containing the OHLC data."
+    "text": "core_v2.GCapiClientV2.get_ohlc(\n    market_id,\n    num_ticks,\n    interval='HOUR',\n    span=1,\n    from_ts=None,\n    to_ts=None,\n)\nRetrieve OHLC data for a specific market.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which OHLC data is retrieved.\nrequired\n\n\nnum_ticks\nint\nThe maximum number of OHLC data points to retrieve.\nrequired\n\n\ninterval\nstr\nThe time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”).\n'HOUR'\n\n\nspan\nint\nThe span size for the given interval.\n1\n\n\nfrom_ts\nint\nStart timestamp for the data.\nNone\n\n\nto_ts\nint\nEnd timestamp for the data.\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA DataFrame containing the OHLC data."
+  },
+  {
+    "objectID": "reference/get_ohlc.html#parameters",
+    "href": "reference/get_ohlc.html#parameters",
+    "title": "get_ohlc",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which OHLC data is retrieved.\nrequired\n\n\nnum_ticks\nint\nThe maximum number of OHLC data points to retrieve.\nrequired\n\n\ninterval\nstr\nThe time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”).\n'HOUR'\n\n\nspan\nint\nThe span size for the given interval.\n1\n\n\nfrom_ts\nint\nStart timestamp for the data.\nNone\n\n\nto_ts\nint\nEnd timestamp for the data.\nNone"
+  },
+  {
+    "objectID": "reference/get_ohlc.html#returns",
+    "href": "reference/get_ohlc.html#returns",
+    "title": "get_ohlc",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA DataFrame containing the OHLC data."
   },
   {
     "objectID": "reference/get_prices.html",
     "href": "reference/get_prices.html",
     "title": "get_prices",
     "section": "",
-    "text": "get_prices\ncore_v2.GCapiClientV2.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n:param market_id: The market ID for which price data is retrieved. :param num_ticks: The maximum number of ticks to retrieve. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :param price_type: The type of price data to retrieve (e.g., “MID”, “BID”, “ASK”). :return: A DataFrame containing the price data."
+    "text": "core_v2.GCapiClientV2.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which price data is retrieved.\nrequired\n\n\nnum_ticks\nint\nThe maximum number of ticks to retrieve.\nrequired\n\n\nfrom_ts\nint\nStart timestamp for the data.\nrequired\n\n\nto_ts\nint\nEnd timestamp for the data.\nrequired\n\n\nprice_type\nstr\nThe type of price data to retrieve (e.g., “MID”, “BID”, “ASK”).\n'MID'\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA DataFrame containing the price data."
+  },
+  {
+    "objectID": "reference/get_prices.html#parameters",
+    "href": "reference/get_prices.html#parameters",
+    "title": "get_prices",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which price data is retrieved.\nrequired\n\n\nnum_ticks\nint\nThe maximum number of ticks to retrieve.\nrequired\n\n\nfrom_ts\nint\nStart timestamp for the data.\nrequired\n\n\nto_ts\nint\nEnd timestamp for the data.\nrequired\n\n\nprice_type\nstr\nThe type of price data to retrieve (e.g., “MID”, “BID”, “ASK”).\n'MID'"
+  },
+  {
+    "objectID": "reference/get_prices.html#returns",
+    "href": "reference/get_prices.html#returns",
+    "title": "get_prices",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA DataFrame containing the price data."
   },
   {
     "objectID": "reference/get_long_series.html",
     "href": "reference/get_long_series.html",
     "title": "get_long_series",
     "section": "",
-    "text": "get_long_series\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
+    "text": "core_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which OHLC data is fetched.\nrequired\n\n\nn_months\nint\nNumber of months of data to retrieve.\n6\n\n\nby_time\nstr\nThe frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.).\n'15min'\n\n\nn\nint\nThe maximum number of data points per request.\n3900\n\n\ninterval\nstr\nThe interval of OHLC data (e.g., “MINUTE”, “HOUR”).\n'MINUTE'\n\n\nspan\nint\nThe span size for the given interval.\n15\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA concatenated DataFrame of all the OHLC data retrieved."
+  },
+  {
+    "objectID": "reference/get_long_series.html#parameters",
+    "href": "reference/get_long_series.html#parameters",
+    "title": "get_long_series",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nmarket_id\nstr\nThe market ID for which OHLC data is fetched.\nrequired\n\n\nn_months\nint\nNumber of months of data to retrieve.\n6\n\n\nby_time\nstr\nThe frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.).\n'15min'\n\n\nn\nint\nThe maximum number of data points per request.\n3900\n\n\ninterval\nstr\nThe interval of OHLC data (e.g., “MINUTE”, “HOUR”).\n'MINUTE'\n\n\nspan\nint\nThe span size for the given interval.\n15"
+  },
+  {
+    "objectID": "reference/get_long_series.html#returns",
+    "href": "reference/get_long_series.html#returns",
+    "title": "get_long_series",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA concatenated DataFrame of all the OHLC data retrieved."
   },
   {
     "objectID": "reference/list_active_orders.html",
     "href": "reference/list_active_orders.html",
     "title": "list_active_orders",
     "section": "",
-    "text": "list_active_orders\ncore_v2.GCapiClientV2.list_active_orders()\nList all active orders.\n:return: A Data Frame containing details of active orders."
+    "text": "core_v2.GCapiClientV2.list_active_orders()\nList all active orders.\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA Data Frame containing details of active orders."
+  },
+  {
+    "objectID": "reference/list_active_orders.html#returns",
+    "href": "reference/list_active_orders.html#returns",
+    "title": "list_active_orders",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA Data Frame containing details of active orders."
   },
   {
     "objectID": "reference/list_open_positions.html",
     "href": "reference/list_open_positions.html",
     "title": "list_open_positions",
     "section": "",
-    "text": "list_open_positions\ncore_v2.GCapiClientV2.list_open_positions()\nList all open positions.\n:return: A Data Frame containing all open positions."
+    "text": "core_v2.GCapiClientV2.list_open_positions()\nList all open positions.\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA Data Frame containing all open positions."
+  },
+  {
+    "objectID": "reference/list_open_positions.html#returns",
+    "href": "reference/list_open_positions.html#returns",
+    "title": "list_open_positions",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA Data Frame containing all open positions."
   },
   {
     "objectID": "reference/get_trade_history.html",
     "href": "reference/get_trade_history.html",
     "title": "get_trade_history",
     "section": "",
-    "text": "get_trade_history\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history."
+    "text": "core_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nfrom_ts\nOptional[str]\nOptional start timestamp for the history.\nNone\n\n\nmax_results\nint\nMaximum number of results to retrieve.\n100\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA dictionary containing the trade history."
+  },
+  {
+    "objectID": "reference/get_trade_history.html#parameters",
+    "href": "reference/get_trade_history.html#parameters",
+    "title": "get_trade_history",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nfrom_ts\nOptional[str]\nOptional start timestamp for the history.\nNone\n\n\nmax_results\nint\nMaximum number of results to retrieve.\n100"
+  },
+  {
+    "objectID": "reference/get_trade_history.html#returns",
+    "href": "reference/get_trade_history.html#returns",
+    "title": "get_trade_history",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA dictionary containing the trade history."
   },
   {
     "objectID": "reference/trade_order.html",
     "href": "reference/trade_order.html",
     "title": "trade_order",
     "section": "",
-    "text": "trade_order\ncore_v2.GCapiClientV2.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary."
+    "text": "core_v2.GCapiClientV2.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nquantity\nfloat\nQuantity to trade.\nrequired\n\n\noffer_price\nfloat\nOffer price for the trade.\nrequired\n\n\nbid_price\nfloat\nBid price for the trade.\nrequired\n\n\ndirection\nstr\nDirection of the trade (“buy” or “sell”).\nrequired\n\n\nmarket_id\nstr\nMarket ID.\nrequired\n\n\nmarket_name\nstr\nMarket name.\nrequired\n\n\nstop_loss\nfloat\nStop loss price (optional).\nNone\n\n\ntake_profit\nfloat\nTake profit price (optional).\nNone\n\n\ntrigger_price\nfloat\nTrigger price (optional).\nNone\n\n\nclose\nbool\nWhether to close the trade (optional).\nFalse\n\n\norder_id\nstr\nOrder ID (optional).\nNone\n\n\ntolerance\nfloat\nPrice tolerance (optional).\nNone\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\ndict\nAPI response as a dictionary."
+  },
+  {
+    "objectID": "reference/trade_order.html#parameters",
+    "href": "reference/trade_order.html#parameters",
+    "title": "trade_order",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nquantity\nfloat\nQuantity to trade.\nrequired\n\n\noffer_price\nfloat\nOffer price for the trade.\nrequired\n\n\nbid_price\nfloat\nBid price for the trade.\nrequired\n\n\ndirection\nstr\nDirection of the trade (“buy” or “sell”).\nrequired\n\n\nmarket_id\nstr\nMarket ID.\nrequired\n\n\nmarket_name\nstr\nMarket name.\nrequired\n\n\nstop_loss\nfloat\nStop loss price (optional).\nNone\n\n\ntake_profit\nfloat\nTake profit price (optional).\nNone\n\n\ntrigger_price\nfloat\nTrigger price (optional).\nNone\n\n\nclose\nbool\nWhether to close the trade (optional).\nFalse\n\n\norder_id\nstr\nOrder ID (optional).\nNone\n\n\ntolerance\nfloat\nPrice tolerance (optional).\nNone"
+  },
+  {
+    "objectID": "reference/trade_order.html#returns",
+    "href": "reference/trade_order.html#returns",
+    "title": "trade_order",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\ndict\nAPI response as a dictionary."
   },
   {
     "objectID": "reference/close_all_trades.html",
     "href": "reference/close_all_trades.html",
     "title": "close_all_trades",
     "section": "",
-    "text": "close_all_trades\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
+    "text": "core_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ntolerance\nfloat\nThe price tolerance for closing trades.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nList[Dict]\nA list of responses from the API for each trade closure."
+  },
+  {
+    "objectID": "reference/close_all_trades.html#parameters",
+    "href": "reference/close_all_trades.html#parameters",
+    "title": "close_all_trades",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ntolerance\nfloat\nThe price tolerance for closing trades.\nrequired"
+  },
+  {
+    "objectID": "reference/close_all_trades.html#returns",
+    "href": "reference/close_all_trades.html#returns",
+    "title": "close_all_trades",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nList[Dict]\nA list of responses from the API for each trade closure."
   },
   {
     "objectID": "reference/close_all_trades_new.html",
     "href": "reference/close_all_trades_new.html",
     "title": "close_all_trades_new",
     "section": "",
-    "text": "close_all_trades_new\ncore_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
+    "text": "core_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\nopen_positions\nList[Dict]\nA list of open positions to close.\nrequired\n\n\ntolerance\nfloat\nThe price tolerance for closing trades.\nrequired\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\nList[Dict]\nA list of responses for each closed trade."
+  },
+  {
+    "objectID": "reference/close_all_trades_new.html#parameters",
+    "href": "reference/close_all_trades_new.html#parameters",
+    "title": "close_all_trades_new",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\nopen_positions\nList[Dict]\nA list of open positions to close.\nrequired\n\n\ntolerance\nfloat\nThe price tolerance for closing trades.\nrequired"
+  },
+  {
+    "objectID": "reference/close_all_trades_new.html#returns",
+    "href": "reference/close_all_trades_new.html#returns",
+    "title": "close_all_trades_new",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\nList[Dict]\nA list of responses for each closed trade."
   },
   {
     "objectID": "reference/convert_orders_to_dataframe.html",
@@ -291,7 +417,21 @@
     "href": "reference/convert_to_dataframe.html",
     "title": "convert_to_dataframe",
     "section": "",
-    "text": "convert_to_dataframe\nutils.convert_to_dataframe(data)\nConvert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame with a nicely formatted datetime column.\n:param data: A list of dictionaries, each containing ‘BarDate’ or ‘TickDate’ keys with ‘/Date(…)’ format. :return: A pandas DataFrame with a ‘Date’ column as a datetime and other columns as numeric data."
+    "text": "utils.convert_to_dataframe(data)\nConvert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame with a nicely formatted datetime column.\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\nDefault\n\n\n\n\ndata\nlist\nA list of dictionaries, each containing ‘BarDate’ or ‘TickDate’ keys with ‘/Date(…)’ format.\nrequired\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nName\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA pandas DataFrame with a ‘Date’ column as a datetime and other columns as numeric data."
+  },
+  {
+    "objectID": "reference/convert_to_dataframe.html#parameters",
+    "href": "reference/convert_to_dataframe.html#parameters",
+    "title": "convert_to_dataframe",
+    "section": "",
+    "text": "Name\nType\nDescription\nDefault\n\n\n\n\ndata\nlist\nA list of dictionaries, each containing ‘BarDate’ or ‘TickDate’ keys with ‘/Date(…)’ format.\nrequired"
+  },
+  {
+    "objectID": "reference/convert_to_dataframe.html#returns",
+    "href": "reference/convert_to_dataframe.html#returns",
+    "title": "convert_to_dataframe",
+    "section": "",
+    "text": "Name\nType\nDescription\n\n\n\n\n\npd.DataFrame\nA pandas DataFrame with a ‘Date’ column as a datetime and other columns as numeric data."
   },
   {
     "objectID": "reference/extract_every_nth.html",

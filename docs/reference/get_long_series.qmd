@@ -14,10 +14,19 @@ core_v2.GCapiClientV2.get_long_series(
 Retrieve a long time series of OHLC data by bypassing API limitations.
 Internally uses get_ohlc to fetch data in chunks across the specified period.
 
-:param market_id: The market ID for which OHLC data is fetched.
-:param n_months: Number of months of data to retrieve.
-:param by_time: The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.).
-:param n: The maximum number of data points per request.
-:param interval: The interval of OHLC data (e.g., "MINUTE", "HOUR").
-:param span: The span size for the given interval.
-:return: A concatenated DataFrame of all the OHLC data retrieved.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type   | Description                                                                          | Default    |
+|-----------|--------|--------------------------------------------------------------------------------------|------------|
+| market_id | str    | The market ID for which OHLC data is fetched.                                        | _required_ |
+| n_months  | int    | Number of months of data to retrieve.                                                | `6`        |
+| by_time   | str    | The frequency (interval) used to chunk data requests (e.g., '15min', '30min', etc.). | `'15min'`  |
+| n         | int    | The maximum number of data points per request.                                       | `3900`     |
+| interval  | str    | The interval of OHLC data (e.g., "MINUTE", "HOUR").                                  | `'MINUTE'` |
+| span      | int    | The span size for the given interval.                                                | `15`       |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                              |
+|--------|--------------|----------------------------------------------------------|
+|        | pd.DataFrame | A concatenated DataFrame of all the OHLC data retrieved. |

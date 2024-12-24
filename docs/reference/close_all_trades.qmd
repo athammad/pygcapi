@@ -6,5 +6,14 @@ core_v2.GCapiClientV2.close_all_trades(tolerance)
 
 Close all open trades with a given price tolerance.
 
-:param tolerance: The price tolerance for closing trades.
-:return: A list of responses from the API for each trade closure.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name      | Type   | Description                             | Default    |
+|-----------|--------|-----------------------------------------|------------|
+| tolerance | float  | The price tolerance for closing trades. | _required_ |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                              |
+|--------|--------------|----------------------------------------------------------|
+|        | List\[Dict\] | A list of responses from the API for each trade closure. |

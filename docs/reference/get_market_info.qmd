@@ -6,6 +6,15 @@ core_v2.GCapiClientV2.get_market_info(market_name, key=None)
 
 Retrieve market information.
 
-:param market_name: The name of the market to retrieve information for.
-:param key: Optional key to extract specific information from the market details.
-:return: Market information as a dictionary or a specific value if a key is provided.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name        | Type            | Description                                                           | Default    |
+|-------------|-----------------|-----------------------------------------------------------------------|------------|
+| market_name | str             | The name of the market to retrieve information for.                   | _required_ |
+| key         | Optional\[str\] | Optional key to extract specific information from the market details. | `None`     |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                                                                  |
+|--------|--------|------------------------------------------------------------------------------|
+|        | Any    | Market information as a dictionary or a specific value if a key is provided. |

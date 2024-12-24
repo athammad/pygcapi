@@ -167,9 +167,65 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>get_market_info</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>core_v2.GCapiClientV2.get_market_info(market_name, key<span class="op">=</span><span class="va">None</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Retrieve market information.</p>
-<p>:param market_name: The name of the market to retrieve information for. :param key: Optional key to extract specific information from the market details. :return: Market information as a dictionary or a specific value if a key is provided.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 15%">
+<col style="width: 62%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>market_name</td>
+<td>str</td>
+<td>The name of the market to retrieve information for.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>key</td>
+<td>Optional[str]</td>
+<td>Optional key to extract specific information from the market details.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 82%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>Any</td>
+<td>Market information as a dictionary or a specific value if a key is provided.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

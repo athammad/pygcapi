@@ -6,4 +6,8 @@ core_v2.GCapiClientV2.list_active_orders()
 
 List all active orders.
 
-:return: A Data Frame containing details of active orders.
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                       |
+|--------|--------------|---------------------------------------------------|
+|        | pd.DataFrame | A Data Frame containing details of active orders. |

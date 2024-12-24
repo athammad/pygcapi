@@ -12,9 +12,18 @@ core_v2.GCapiClientV2.get_prices(
 
 Retrieve tick history (price data) for a specific market.
 
-:param market_id: The market ID for which price data is retrieved.
-:param num_ticks: The maximum number of ticks to retrieve.
-:param from_ts: Start timestamp for the data.
-:param to_ts: End timestamp for the data.
-:param price_type: The type of price data to retrieve (e.g., "MID", "BID", "ASK").
-:return: A DataFrame containing the price data.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name       | Type   | Description                                                     | Default    |
+|------------|--------|-----------------------------------------------------------------|------------|
+| market_id  | str    | The market ID for which price data is retrieved.                | _required_ |
+| num_ticks  | int    | The maximum number of ticks to retrieve.                        | _required_ |
+| from_ts    | int    | Start timestamp for the data.                                   | _required_ |
+| to_ts      | int    | End timestamp for the data.                                     | _required_ |
+| price_type | str    | The type of price data to retrieve (e.g., "MID", "BID", "ASK"). | `'MID'`    |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                            |
+|--------|--------------|----------------------------------------|
+|        | pd.DataFrame | A DataFrame containing the price data. |

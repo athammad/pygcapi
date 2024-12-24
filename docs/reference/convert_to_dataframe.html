@@ -167,9 +167,59 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h1>convert_to_dataframe</h1>
 <div class="sourceCode" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>utils.convert_to_dataframe(data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Convert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame with a nicely formatted datetime column.</p>
-<p>:param data: A list of dictionaries, each containing ‘BarDate’ or ‘TickDate’ keys with ‘/Date(…)’ format. :return: A pandas DataFrame with a ‘Date’ column as a datetime and other columns as numeric data.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 77%">
+<col style="width: 9%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>data</td>
+<td>list</td>
+<td>A list of dictionaries, each containing ‘BarDate’ or ‘TickDate’ keys with ‘/Date(…)’ format.</td>
+<td><em>required</em></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 7%">
+<col style="width: 12%">
+<col style="width: 80%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>pd.DataFrame</td>
+<td>A pandas DataFrame with a ‘Date’ column as a datetime and other columns as numeric data.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

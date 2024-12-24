@@ -6,6 +6,15 @@ core_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)
 
 Close all trades using a provided list of open positions and a given tolerance.
 
-:param open_positions: A list of open positions to close.
-:param tolerance: The price tolerance for closing trades.
-:return: A list of responses for each closed trade.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name           | Type         | Description                             | Default    |
+|----------------|--------------|-----------------------------------------|------------|
+| open_positions | List\[Dict\] | A list of open positions to close.      | _required_ |
+| tolerance      | float        | The price tolerance for closing trades. | _required_ |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type         | Description                                |
+|--------|--------------|--------------------------------------------|
+|        | List\[Dict\] | A list of responses for each closed trade. |

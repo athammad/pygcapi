@@ -174,9 +174,84 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    to_ts<span class="op">=</span><span class="va">None</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Retrieve OHLC data for a specific market.</p>
-<p>:param market_id: The market ID for which OHLC data is retrieved. :param num_ticks: The maximum number of OHLC data points to retrieve. :param interval: The time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”). :param span: The span size for the given interval. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :return: A DataFrame containing the OHLC data.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 69%">
+<col style="width: 12%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>market_id</td>
+<td>str</td>
+<td>The market ID for which OHLC data is retrieved.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>num_ticks</td>
+<td>int</td>
+<td>The maximum number of OHLC data points to retrieve.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="odd">
+<td>interval</td>
+<td>str</td>
+<td>The time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”).</td>
+<td><code>'HOUR'</code></td>
+</tr>
+<tr class="even">
+<td>span</td>
+<td>int</td>
+<td>The span size for the given interval.</td>
+<td><code>1</code></td>
+</tr>
+<tr class="odd">
+<td>from_ts</td>
+<td>int</td>
+<td>Start timestamp for the data.</td>
+<td><code>None</code></td>
+</tr>
+<tr class="even">
+<td>to_ts</td>
+<td>int</td>
+<td>End timestamp for the data.</td>
+<td><code>None</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>pd.DataFrame</td>
+<td>A DataFrame containing the OHLC data.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

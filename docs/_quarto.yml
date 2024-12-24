@@ -65,6 +65,7 @@ website:
 quartodoc:
   # the name used to import the package you want to create reference docs for
   package: pygcapi
+  parser: sphinx
 
   sidebar: _sidebar.yml 
   # write sidebar and style data

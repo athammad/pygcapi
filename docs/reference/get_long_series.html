@@ -174,9 +174,89 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>    span<span class="op">=</span><span class="dv">15</span>,</span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Retrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.</p>
-<p>:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved.</p>
+<section id="parameters" class="level2 doc-section doc-section-parameters">
+<h2 class="doc-section doc-section-parameters anchored" data-anchor-id="parameters">Parameters</h2>
+<table class="table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 6%">
+<col style="width: 73%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+<th>Default</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>market_id</td>
+<td>str</td>
+<td>The market ID for which OHLC data is fetched.</td>
+<td><em>required</em></td>
+</tr>
+<tr class="even">
+<td>n_months</td>
+<td>int</td>
+<td>Number of months of data to retrieve.</td>
+<td><code>6</code></td>
+</tr>
+<tr class="odd">
+<td>by_time</td>
+<td>str</td>
+<td>The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.).</td>
+<td><code>'15min'</code></td>
+</tr>
+<tr class="even">
+<td>n</td>
+<td>int</td>
+<td>The maximum number of data points per request.</td>
+<td><code>3900</code></td>
+</tr>
+<tr class="odd">
+<td>interval</td>
+<td>str</td>
+<td>The interval of OHLC data (e.g., “MINUTE”, “HOUR”).</td>
+<td><code>'MINUTE'</code></td>
+</tr>
+<tr class="even">
+<td>span</td>
+<td>int</td>
+<td>The span size for the given interval.</td>
+<td><code>15</code></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="returns" class="level2 doc-section doc-section-returns">
+<h2 class="doc-section doc-section-returns anchored" data-anchor-id="returns">Returns</h2>
+<table class="table">
+<colgroup>
+<col style="width: 10%">
+<col style="width: 17%">
+<col style="width: 72%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Name</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td></td>
+<td>pd.DataFrame</td>
+<td>A concatenated DataFrame of all the OHLC data retrieved.</td>
+</tr>
+</tbody>
+</table>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->

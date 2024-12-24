@@ -19,16 +19,25 @@ core_v2.GCapiClientV2.trade_order(
 
 Place a trade order.
 
-:param quantity: Quantity to trade.
-:param offer_price: Offer price for the trade.
-:param bid_price: Bid price for the trade.
-:param direction: Direction of the trade ("buy" or "sell").
-:param market_id: Market ID.
-:param market_name: Market name.
-:param stop_loss: Stop loss price (optional).
-:param take_profit: Take profit price (optional).
-:param trigger_price: Trigger price (optional).
-:param close: Whether to close the trade (optional).
-:param order_id: Order ID (optional).
-:param tolerance: Price tolerance (optional).
-:return: API response as a dictionary.
+## Parameters {.doc-section .doc-section-parameters}
+
+| Name          | Type   | Description                               | Default    |
+|---------------|--------|-------------------------------------------|------------|
+| quantity      | float  | Quantity to trade.                        | _required_ |
+| offer_price   | float  | Offer price for the trade.                | _required_ |
+| bid_price     | float  | Bid price for the trade.                  | _required_ |
+| direction     | str    | Direction of the trade ("buy" or "sell"). | _required_ |
+| market_id     | str    | Market ID.                                | _required_ |
+| market_name   | str    | Market name.                              | _required_ |
+| stop_loss     | float  | Stop loss price (optional).               | `None`     |
+| take_profit   | float  | Take profit price (optional).             | `None`     |
+| trigger_price | float  | Trigger price (optional).                 | `None`     |
+| close         | bool   | Whether to close the trade (optional).    | `False`    |
+| order_id      | str    | Order ID (optional).                      | `None`     |
+| tolerance     | float  | Price tolerance (optional).               | `None`     |
+
+## Returns {.doc-section .doc-section-returns}
+
+| Name   | Type   | Description                   |
+|--------|--------|-------------------------------|
+|        | dict   | API response as a dictionary. |
