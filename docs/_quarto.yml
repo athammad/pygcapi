@@ -52,6 +52,7 @@ website:
       - icon: github
         href: https://github.com/athammad/pygcapi
         aria-label: pygcapi python GitHub
+output-dir: _site
 # tell quarto to read the generated sidebar
 # metadata-files:
 #   - api/_sidebar.yml
