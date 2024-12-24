@@ -7,11 +7,25 @@
     "text": "V1 Methods.\n\n\n\nget_market_info\nRetrieve market information based on the market name.\n\n\nget_ohlc\nRetrieve OHLC (Open-High-Low-Close) data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance.\n\n\n\n\n\n\nV2 Methods.\n\n\n\nget_market_info\nRetrieve market information.\n\n\nget_ohlc\nRetrieve OHLC data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance.\n\n\n\n\n\n\nvarious helper functions.\n\n\n\nconvert_orders_to_dataframe\nConvert nested order data to a Pandas DataFrame.\n\n\nconvert_to_dataframe\nConvert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame\n\n\nextract_every_nth\nGenerate start and stop Unix UTC timestamps for API requests.\n\n\nget_instruction_status_description\nRetrieve the description of an instruction status code.\n\n\nget_instruction_status_reason_description\nRetrieve the description of an instruction status reason code.\n\n\nget_order_action_type_description\nRetrieve the description of an order action type code.\n\n\nget_order_status_description\nRetrieve the description of an order status code.\n\n\nget_order_status_reason_description\nRetrieve the description of an order status reason code."
   },
   {
-    "objectID": "reference/index.html#some-functions",
-    "href": "reference/index.html#some-functions",
+    "objectID": "reference/index.html#gcapiclientv1",
+    "href": "reference/index.html#gcapiclientv1",
     "title": "Function reference",
     "section": "",
-    "text": "Functions to inspect docstrings.\n\n\n\nutils\n\n\n\ncore_v1.GCapiClientV1\nA client for interacting with the Gain Capital API.\n\n\ncore_v2.GCapiClientV2"
+    "text": "V1 Methods.\n\n\n\nget_market_info\nRetrieve market information based on the market name.\n\n\nget_ohlc\nRetrieve OHLC (Open-High-Low-Close) data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance."
+  },
+  {
+    "objectID": "reference/index.html#gcapiclientv2",
+    "href": "reference/index.html#gcapiclientv2",
+    "title": "Function reference",
+    "section": "",
+    "text": "V2 Methods.\n\n\n\nget_market_info\nRetrieve market information.\n\n\nget_ohlc\nRetrieve OHLC data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance."
+  },
+  {
+    "objectID": "reference/index.html#utils",
+    "href": "reference/index.html#utils",
+    "title": "Function reference",
+    "section": "",
+    "text": "various helper functions.\n\n\n\nconvert_orders_to_dataframe\nConvert nested order data to a Pandas DataFrame.\n\n\nconvert_to_dataframe\nConvert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame\n\n\nextract_every_nth\nGenerate start and stop Unix UTC timestamps for API requests.\n\n\nget_instruction_status_description\nRetrieve the description of an instruction status code.\n\n\nget_instruction_status_reason_description\nRetrieve the description of an instruction status reason code.\n\n\nget_order_action_type_description\nRetrieve the description of an order action type code.\n\n\nget_order_status_description\nRetrieve the description of an order status code.\n\n\nget_order_status_reason_description\nRetrieve the description of an order status reason code."
   },
   {
     "objectID": "reference/utils.html",
@@ -56,41 +70,6 @@
     "text": "Name\nDescription\n\n\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance.\n\n\nget_account_info\nRetrieve account information.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nget_market_info\nRetrieve market information.\n\n\nget_ohlc\nRetrieve OHLC data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\ntrade_order\nPlace a trade order.\n\n\n\n\n\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure.\n\n\n\ncore_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade.\n\n\n\ncore_v2.GCapiClientV2.get_account_info(key=None)\nRetrieve account information.\n:param key: Optional key to extract specific information from the account details. :return: Account information as a dictionary or a specific value if a key is provided.\n\n\n\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved.\n\n\n\ncore_v2.GCapiClientV2.get_market_info(market_name, key=None)\nRetrieve market information.\n:param market_name: The name of the market to retrieve information for. :param key: Optional key to extract specific information from the market details. :return: Market information as a dictionary or a specific value if a key is provided.\n\n\n\ncore_v2.GCapiClientV2.get_ohlc(\n    market_id,\n    num_ticks,\n    interval='HOUR',\n    span=1,\n    from_ts=None,\n    to_ts=None,\n)\nRetrieve OHLC data for a specific market.\n:param market_id: The market ID for which OHLC data is retrieved. :param num_ticks: The maximum number of OHLC data points to retrieve. :param interval: The time interval of the OHLC data (e.g., “MINUTE”, “HOUR”, “DAY”). :param span: The span size for the given interval. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :return: A DataFrame containing the OHLC data.\n\n\n\ncore_v2.GCapiClientV2.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n:param market_id: The market ID for which price data is retrieved. :param num_ticks: The maximum number of ticks to retrieve. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :param price_type: The type of price data to retrieve (e.g., “MID”, “BID”, “ASK”). :return: A DataFrame containing the price data.\n\n\n\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history.\n\n\n\ncore_v2.GCapiClientV2.list_active_orders()\nList all active orders.\n:return: A Data Frame containing details of active orders.\n\n\n\ncore_v2.GCapiClientV2.list_open_positions()\nList all open positions.\n:return: A Data Frame containing all open positions.\n\n\n\ncore_v2.GCapiClientV2.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary."
   },
   {
-    "objectID": "reference/index.html#gcapiclientv1",
-    "href": "reference/index.html#gcapiclientv1",
-    "title": "Function reference",
-    "section": "",
-    "text": "V1 Methods.\n\n\n\nget_market_info\nRetrieve market information based on the market name.\n\n\nget_ohlc\nRetrieve OHLC (Open-High-Low-Close) data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance."
-  },
-  {
-    "objectID": "reference/index.html#gcapiclientv2",
-    "href": "reference/index.html#gcapiclientv2",
-    "title": "Function reference",
-    "section": "",
-    "text": "V2 Methods.\n\n\n\nget_market_info\nRetrieve market information.\n\n\nget_ohlc\nRetrieve OHLC data for a specific market.\n\n\nget_prices\nRetrieve tick history (price data) for a specific market.\n\n\nget_long_series\nRetrieve a long time series of OHLC data by bypassing API limitations.\n\n\nlist_active_orders\nList all active orders.\n\n\nlist_open_positions\nList all open positions.\n\n\nget_trade_history\nRetrieve the trade history for the account.\n\n\ntrade_order\nPlace a trade order.\n\n\nclose_all_trades\nClose all open trades with a given price tolerance.\n\n\nclose_all_trades_new\nClose all trades using a provided list of open positions and a given tolerance."
-  },
-  {
-    "objectID": "reference/core_v1.GCapiClientV1.close_all_trades.html",
-    "href": "reference/core_v1.GCapiClientV1.close_all_trades.html",
-    "title": "core_v1.GCapiClientV1.close_all_trades",
-    "section": "",
-    "text": "core_v1.GCapiClientV1.close_all_trades\ncore_v1.GCapiClientV1.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
-  },
-  {
-    "objectID": "reference/core_v1.GCapiClientV1.close_all_trades_new.html",
-    "href": "reference/core_v1.GCapiClientV1.close_all_trades_new.html",
-    "title": "core_v1.GCapiClientV1.close_all_trades_new",
-    "section": "",
-    "text": "core_v1.GCapiClientV1.close_all_trades_new\ncore_v1.GCapiClientV1.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
-  },
-  {
-    "objectID": "reference/core_v1.GCapiClientV1.get_long_series.html",
-    "href": "reference/core_v1.GCapiClientV1.get_long_series.html",
-    "title": "core_v1.GCapiClientV1.get_long_series",
-    "section": "",
-    "text": "core_v1.GCapiClientV1.get_long_series\ncore_v1.GCapiClientV1.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
-  },
-  {
     "objectID": "reference/core_v1.GCapiClientV1.get_market_info.html",
     "href": "reference/core_v1.GCapiClientV1.get_market_info.html",
     "title": "core_v1.GCapiClientV1.get_market_info",
@@ -112,11 +91,11 @@
     "text": "core_v1.GCapiClientV1.get_prices\ncore_v1.GCapiClientV1.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n:param market_id: The market ID for which price data is retrieved. :param num_ticks: The maximum number of ticks to retrieve. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :param price_type: The type of price data to retrieve (e.g., “MID”, “BID”, “ASK”). :return: A DataFrame containing the price data."
   },
   {
-    "objectID": "reference/core_v1.GCapiClientV1.get_trade_history.html",
-    "href": "reference/core_v1.GCapiClientV1.get_trade_history.html",
-    "title": "core_v1.GCapiClientV1.get_trade_history",
+    "objectID": "reference/core_v1.GCapiClientV1.get_long_series.html",
+    "href": "reference/core_v1.GCapiClientV1.get_long_series.html",
+    "title": "core_v1.GCapiClientV1.get_long_series",
     "section": "",
-    "text": "core_v1.GCapiClientV1.get_trade_history\ncore_v1.GCapiClientV1.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: The start timestamp for retrieving trade history (optional). :param max_results: The maximum number of results to retrieve. :return: A DataFrame containing the trade history."
+    "text": "core_v1.GCapiClientV1.get_long_series\ncore_v1.GCapiClientV1.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
   },
   {
     "objectID": "reference/core_v1.GCapiClientV1.list_active_orders.html",
@@ -133,6 +112,13 @@
     "text": "core_v1.GCapiClientV1.list_open_positions\ncore_v1.GCapiClientV1.list_open_positions()\nList all open positions.\n:return: A Data Frame containing details of open positions."
   },
   {
+    "objectID": "reference/core_v1.GCapiClientV1.get_trade_history.html",
+    "href": "reference/core_v1.GCapiClientV1.get_trade_history.html",
+    "title": "core_v1.GCapiClientV1.get_trade_history",
+    "section": "",
+    "text": "core_v1.GCapiClientV1.get_trade_history\ncore_v1.GCapiClientV1.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: The start timestamp for retrieving trade history (optional). :param max_results: The maximum number of results to retrieve. :return: A DataFrame containing the trade history."
+  },
+  {
     "objectID": "reference/core_v1.GCapiClientV1.trade_order.html",
     "href": "reference/core_v1.GCapiClientV1.trade_order.html",
     "title": "core_v1.GCapiClientV1.trade_order",
@@ -140,18 +126,18 @@
     "text": "core_v1.GCapiClientV1.trade_order\ncore_v1.GCapiClientV1.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary."
   },
   {
-    "objectID": "reference/core_v2.GCapiClientV2.close_all_trades.html",
-    "href": "reference/core_v2.GCapiClientV2.close_all_trades.html",
-    "title": "core_v2.GCapiClientV2.close_all_trades",
+    "objectID": "reference/core_v1.GCapiClientV1.close_all_trades.html",
+    "href": "reference/core_v1.GCapiClientV1.close_all_trades.html",
+    "title": "core_v1.GCapiClientV1.close_all_trades",
     "section": "",
-    "text": "core_v2.GCapiClientV2.close_all_trades\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
+    "text": "core_v1.GCapiClientV1.close_all_trades\ncore_v1.GCapiClientV1.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
   },
   {
-    "objectID": "reference/core_v2.GCapiClientV2.get_long_series.html",
-    "href": "reference/core_v2.GCapiClientV2.get_long_series.html",
-    "title": "core_v2.GCapiClientV2.get_long_series",
+    "objectID": "reference/core_v1.GCapiClientV1.close_all_trades_new.html",
+    "href": "reference/core_v1.GCapiClientV1.close_all_trades_new.html",
+    "title": "core_v1.GCapiClientV1.close_all_trades_new",
     "section": "",
-    "text": "core_v2.GCapiClientV2.get_long_series\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
+    "text": "core_v1.GCapiClientV1.close_all_trades_new\ncore_v1.GCapiClientV1.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
   },
   {
     "objectID": "reference/core_v2.GCapiClientV2.get_market_info.html",
@@ -175,11 +161,11 @@
     "text": "core_v2.GCapiClientV2.get_prices\ncore_v2.GCapiClientV2.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n:param market_id: The market ID for which price data is retrieved. :param num_ticks: The maximum number of ticks to retrieve. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :param price_type: The type of price data to retrieve (e.g., “MID”, “BID”, “ASK”). :return: A DataFrame containing the price data."
   },
   {
-    "objectID": "reference/core_v2.GCapiClientV2.get_trade_history.html",
-    "href": "reference/core_v2.GCapiClientV2.get_trade_history.html",
-    "title": "core_v2.GCapiClientV2.get_trade_history",
+    "objectID": "reference/core_v2.GCapiClientV2.get_long_series.html",
+    "href": "reference/core_v2.GCapiClientV2.get_long_series.html",
+    "title": "core_v2.GCapiClientV2.get_long_series",
     "section": "",
-    "text": "core_v2.GCapiClientV2.get_trade_history\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history."
+    "text": "core_v2.GCapiClientV2.get_long_series\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
   },
   {
     "objectID": "reference/core_v2.GCapiClientV2.list_active_orders.html",
@@ -196,6 +182,13 @@
     "text": "core_v2.GCapiClientV2.list_open_positions\ncore_v2.GCapiClientV2.list_open_positions()\nList all open positions.\n:return: A Data Frame containing all open positions."
   },
   {
+    "objectID": "reference/core_v2.GCapiClientV2.get_trade_history.html",
+    "href": "reference/core_v2.GCapiClientV2.get_trade_history.html",
+    "title": "core_v2.GCapiClientV2.get_trade_history",
+    "section": "",
+    "text": "core_v2.GCapiClientV2.get_trade_history\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history."
+  },
+  {
     "objectID": "reference/core_v2.GCapiClientV2.trade_order.html",
     "href": "reference/core_v2.GCapiClientV2.trade_order.html",
     "title": "core_v2.GCapiClientV2.trade_order",
@@ -203,11 +196,11 @@
     "text": "core_v2.GCapiClientV2.trade_order\ncore_v2.GCapiClientV2.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary."
   },
   {
-    "objectID": "reference/index.html#utils",
-    "href": "reference/index.html#utils",
-    "title": "Function reference",
+    "objectID": "reference/core_v2.GCapiClientV2.close_all_trades.html",
+    "href": "reference/core_v2.GCapiClientV2.close_all_trades.html",
+    "title": "core_v2.GCapiClientV2.close_all_trades",
     "section": "",
-    "text": "various helper functions.\n\n\n\nconvert_orders_to_dataframe\nConvert nested order data to a Pandas DataFrame.\n\n\nconvert_to_dataframe\nConvert a list of dictionaries with a ‘/Date(…)’ timestamp into a pandas DataFrame\n\n\nextract_every_nth\nGenerate start and stop Unix UTC timestamps for API requests.\n\n\nget_instruction_status_description\nRetrieve the description of an instruction status code.\n\n\nget_instruction_status_reason_description\nRetrieve the description of an instruction status reason code.\n\n\nget_order_action_type_description\nRetrieve the description of an order action type code.\n\n\nget_order_status_description\nRetrieve the description of an order status code.\n\n\nget_order_status_reason_description\nRetrieve the description of an order status reason code."
+    "text": "core_v2.GCapiClientV2.close_all_trades\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
   },
   {
     "objectID": "reference/core_v2.GCapiClientV2.close_all_trades_new.html",
@@ -215,27 +208,6 @@
     "title": "core_v2.GCapiClientV2.close_all_trades_new",
     "section": "",
     "text": "core_v2.GCapiClientV2.close_all_trades_new\ncore_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
-  },
-  {
-    "objectID": "reference/close_all_trades.html",
-    "href": "reference/close_all_trades.html",
-    "title": "close_all_trades",
-    "section": "",
-    "text": "close_all_trades\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
-  },
-  {
-    "objectID": "reference/close_all_trades_new.html",
-    "href": "reference/close_all_trades_new.html",
-    "title": "close_all_trades_new",
-    "section": "",
-    "text": "close_all_trades_new\ncore_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
-  },
-  {
-    "objectID": "reference/get_long_series.html",
-    "href": "reference/get_long_series.html",
-    "title": "get_long_series",
-    "section": "",
-    "text": "get_long_series\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
   },
   {
     "objectID": "reference/get_market_info.html",
@@ -259,11 +231,11 @@
     "text": "get_prices\ncore_v2.GCapiClientV2.get_prices(\n    market_id,\n    num_ticks,\n    from_ts,\n    to_ts,\n    price_type='MID',\n)\nRetrieve tick history (price data) for a specific market.\n:param market_id: The market ID for which price data is retrieved. :param num_ticks: The maximum number of ticks to retrieve. :param from_ts: Start timestamp for the data. :param to_ts: End timestamp for the data. :param price_type: The type of price data to retrieve (e.g., “MID”, “BID”, “ASK”). :return: A DataFrame containing the price data."
   },
   {
-    "objectID": "reference/get_trade_history.html",
-    "href": "reference/get_trade_history.html",
-    "title": "get_trade_history",
+    "objectID": "reference/get_long_series.html",
+    "href": "reference/get_long_series.html",
+    "title": "get_long_series",
     "section": "",
-    "text": "get_trade_history\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history."
+    "text": "get_long_series\ncore_v2.GCapiClientV2.get_long_series(\n    market_id,\n    n_months=6,\n    by_time='15min',\n    n=3900,\n    interval='MINUTE',\n    span=15,\n)\nRetrieve a long time series of OHLC data by bypassing API limitations. Internally uses get_ohlc to fetch data in chunks across the specified period.\n:param market_id: The market ID for which OHLC data is fetched. :param n_months: Number of months of data to retrieve. :param by_time: The frequency (interval) used to chunk data requests (e.g., ‘15min’, ‘30min’, etc.). :param n: The maximum number of data points per request. :param interval: The interval of OHLC data (e.g., “MINUTE”, “HOUR”). :param span: The span size for the given interval. :return: A concatenated DataFrame of all the OHLC data retrieved."
   },
   {
     "objectID": "reference/list_active_orders.html",
@@ -280,11 +252,32 @@
     "text": "list_open_positions\ncore_v2.GCapiClientV2.list_open_positions()\nList all open positions.\n:return: A Data Frame containing all open positions."
   },
   {
+    "objectID": "reference/get_trade_history.html",
+    "href": "reference/get_trade_history.html",
+    "title": "get_trade_history",
+    "section": "",
+    "text": "get_trade_history\ncore_v2.GCapiClientV2.get_trade_history(from_ts=None, max_results=100)\nRetrieve the trade history for the account.\n:param from_ts: Optional start timestamp for the history. :param max_results: Maximum number of results to retrieve. :return: A dictionary containing the trade history."
+  },
+  {
     "objectID": "reference/trade_order.html",
     "href": "reference/trade_order.html",
     "title": "trade_order",
     "section": "",
     "text": "trade_order\ncore_v2.GCapiClientV2.trade_order(\n    quantity,\n    offer_price,\n    bid_price,\n    direction,\n    market_id,\n    market_name,\n    stop_loss=None,\n    take_profit=None,\n    trigger_price=None,\n    close=False,\n    order_id=None,\n    tolerance=None,\n)\nPlace a trade order.\n:param quantity: Quantity to trade. :param offer_price: Offer price for the trade. :param bid_price: Bid price for the trade. :param direction: Direction of the trade (“buy” or “sell”). :param market_id: Market ID. :param market_name: Market name. :param stop_loss: Stop loss price (optional). :param take_profit: Take profit price (optional). :param trigger_price: Trigger price (optional). :param close: Whether to close the trade (optional). :param order_id: Order ID (optional). :param tolerance: Price tolerance (optional). :return: API response as a dictionary."
+  },
+  {
+    "objectID": "reference/close_all_trades.html",
+    "href": "reference/close_all_trades.html",
+    "title": "close_all_trades",
+    "section": "",
+    "text": "close_all_trades\ncore_v2.GCapiClientV2.close_all_trades(tolerance)\nClose all open trades with a given price tolerance.\n:param tolerance: The price tolerance for closing trades. :return: A list of responses from the API for each trade closure."
+  },
+  {
+    "objectID": "reference/close_all_trades_new.html",
+    "href": "reference/close_all_trades_new.html",
+    "title": "close_all_trades_new",
+    "section": "",
+    "text": "close_all_trades_new\ncore_v2.GCapiClientV2.close_all_trades_new(open_positions, tolerance)\nClose all trades using a provided list of open positions and a given tolerance.\n:param open_positions: A list of open positions to close. :param tolerance: The price tolerance for closing trades. :return: A list of responses for each closed trade."
   },
   {
     "objectID": "reference/convert_orders_to_dataframe.html",
