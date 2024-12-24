@@ -480,7 +480,7 @@
     "href": "index.html",
     "title": "pygcapi ",
     "section": "",
-    "text": "The pygcapi Python library provides an interface to the Gain Capital API (V1 and V2), allowing users to perform various trading operations on Forex.com. This library includes functionalities for account management, market information retrieval, trading operations, and historical data extraction. It also includes helper utilities and lookup tables to facilitate the interpretation of API responses.\nBy leveraging the extensive Python ecosystem—which includes libraries for data manipulation, scientific computing, and machine learning—pygcapi offers a robust solution for traders and data scientists seeking to enhance their trading operations and develop automated trading strategies.\n\n\n\nAccount Management: Initialize sessions and manage user accounts.\nMarket Information: Retrieve real-time market data and details.\nTrading Operations: Execute trades, manage orders, and track positions.\nHistorical Data: Extract and analyze historical market data.\nHelper Functions: Utilize various helper functions and lookup tables for easier API response interpretation.\n\n\n\n\n\nYou can install this package directly from GitHub:\npip install git+https://github.com/athammad/pygcapi.git"
+    "text": "The pygcapi Python library provides an interface to the Gain Capital API (V1 and V2), allowing users to perform various trading operations on Forex.com. This library includes functionalities for account management, market information retrieval, trading operations, and historical data extraction. It also includes helper utilities and lookup tables to facilitate the interpretation of API responses.\nBy leveraging the extensive Python ecosystem—which includes libraries for data manipulation, scientific computing, and machine learning—pygcapi offers a robust solution for traders and data scientists seeking to enhance their trading operations and develop automated trading strategies.\n\n\n\nAccount Management: Initialize sessions and manage user accounts.\nMarket Information: Retrieve real-time market data and details.\nTrading Operations: Execute trades, manage orders, and track positions.\nHistorical Data: Extract and analyze historical market data.\nHelper Functions: Utilize various helper functions and lookup tables for easier API response interpretation.\n\n\n\n\nYou can install this package directly from PyPI using pip:\npip install pygcapi\nOr from GitHub:\npip install git+https://github.com/athammad/pygcapi.git"
   },
   {
     "objectID": "index.html#features",
@@ -494,7 +494,7 @@
     "href": "index.html#installation",
     "title": "pygcapi ",
     "section": "",
-    "text": "You can install this package directly from GitHub:\npip install git+https://github.com/athammad/pygcapi.git"
+    "text": "You can install this package directly from PyPI using pip:\npip install pygcapi\nOr from GitHub:\npip install git+https://github.com/athammad/pygcapi.git"
   },
   {
     "objectID": "index.html#getting-help-or-reporting-an-issue",
